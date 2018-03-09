@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color=tertiary>
+    <ion-segment>
+      <ion-segment-button value="manger">
+        Eat
+      </ion-segment-button>
+      <ion-segment-button value="boire">
+        Drink
+      </ion-segment-button>
+    </ion-segment>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goAddDeal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, deal)" padding>
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/logo.png">
+      </ion-thumbnail>
+      <ion-icon name="star" style='color: yellow'></ion-icon>
+      <ion-icon name="star" style='color: yellow'></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <!--{{deal.comments.length}}-->
+      <p>
+        {{tab.nom}}
+      </p>
+      <ion-icon name="chatbubbles" margin-top></ion-icon>
+      <!--{{deal.comments.length}}-->
+      <a float-right margin-top (click)="itemTapped($event, deal)">Allons manger...</a>
+    </button>
+  </ion-list>
+</ion-content>

@@ -1,14 +1,31 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar color=tertiary>
+    <ion-title>CheapDreat</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<ion-content text-center padding id="restau-1">
+  <img src="../../assets/imgs/logo.png" width="50%">
+
+  <div id="bouttons">
+    <button ion-button color="primary" round block margin-top (click)="goToConnect()"> 
+      <ion-icon name='contact'></ion-icon>&emsp;Connectez-vous
+    </button>
+
+    <button ion-button color="secondary" round block margin-top>
+      <ion-icon name='logo-facebook'></ion-icon>&emsp;Connexion avec Facebook
+    </button>
+
+    <button ion-button color="tertiary" round block (click)="goToCreate()" margin-top>
+      <ion-icon name='people'></ion-icon>&emsp;Créer un compte
+    </button>
+  </div>
+
 </ion-content>
+
+<ion-footer padding>
+  <button ion-button outline block color="light" (click)="goWithoutConnect()">Poursuivre sans se connecter&emsp;
+    <ion-icon name="arrow-forward"></ion-icon>
+  </button>
+</ion-footer>

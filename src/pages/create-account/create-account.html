@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color=tertiary>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Créer un compte</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="restau-2">
+
+  <div style="margin-top : 50px">
+    <form padding (ngSubmit)="create()">
+
+      <ion-item>
+        <ion-label color="primary" floating>Email</ion-label>
+        <!--[(ngModel)]="user.email"-->
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>Pseudo</ion-label>
+        <!--[(ngModel)]="user.pseudo"-->
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>Mot de passe</ion-label>
+        <!--[(ngModel)]="user.mdp"-->
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>Confirmation mot de passe</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <div text-center style="margin-top : 30px">
+        <button ion-button color="secondary" round type="submit">S'enregistrer</button>
+      </div>
+
+    </form>
+  </div>
+</ion-content>

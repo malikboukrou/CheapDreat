@@ -1,30 +1,52 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import {MyApp} from './app.component';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import {DealDetailsPage} from '../pages/deal-details/deal-details';
+import {ListDealPage} from '../pages/list-deal/list-deal';
+import {HomePage} from '../pages/home/home';
+import {CreateAccountPage} from '../pages/create-account/create-account';
+import {ConnexionPage} from '../pages/connexion/connexion';
+
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {CreateDealPage} from "../pages/create-deal/create-deal";
+
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { RestProvider } from '../providers/rest/rest';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    DealDetailsPage,
+    ListDealPage,
+    HomePage,
+    CreateAccountPage,
+    ConnexionPage,
+    CreateDealPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    DealDetailsPage,
+    ListDealPage,
+    HomePage,
+    CreateAccountPage,
+    ConnexionPage,
+    CreateDealPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider
   ]
 })
 export class AppModule {}

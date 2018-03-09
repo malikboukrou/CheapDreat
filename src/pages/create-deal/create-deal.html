@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-navbar color=tertiary>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Poster un deal</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background-gray">
+  <form (ngSubmit)="saveDeal()">
+
+    <ion-label style="margin-left: 15px">TYPE DE DEAL</ion-label>
+
+    <div class="row">
+      <div class="column bordered" style="border-right: 1px solid #aaa;">
+        <button ion-button clear icon-only (click)="setType('eat')">
+          <ion-icon name="restaurant"></ion-icon>
+        </button>
+      </div>
+      <div class="column bordered">
+        <button ion-button clear icon-only (click)="setType('drink')">
+          <ion-icon name="wine"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <ion-label style="margin-left: 15px">INFORMATIONS</ion-label>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="briefcase"></ion-icon>
+      </ion-label>
+      <ion-input type="text" placeholder="Nom de l'enseigne" [(ngModel)]="deal.nom" name="nom"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="home"></ion-icon>
+      </ion-label>
+      <ion-input type="text" placeholder="Adresse" [(ngModel)]="deal.adresse" name="adresse"></ion-input>
+    </ion-item>
+
+    <div class="row">
+      <div class="column">
+        <ion-item>
+          <ion-label>
+            <ion-icon name="locate"></ion-icon>
+          </ion-label>
+          <ion-input type="text" placeholder="Ville" [(ngModel)]="deal.ville" name="ville"></ion-input>
+        </ion-item>
+      </div>
+      <div class="column">
+        <ion-item>
+          <ion-input type="number" placeholder="CP" [(ngModel)]="deal.codepostal" name="codepostal"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="call"></ion-icon>
+      </ion-label>
+      <ion-input type="tel" placeholder="N° Tél" [(ngModel)]="deal.telephone" name="telephone"></ion-input>
+    </ion-item>
+
+    <ion-label style="margin-left: 15px">DÉTAILS DU DEAL</ion-label>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Type de réduction</ion-label>
+        <ion-select [(ngModel)]="reduction_type" name="deal.reduction_type" ng-change="showSelectValue(reducType)">
+          <ion-option value="reduction">Réduction</ion-option>
+          <ion-option value="rabais">Rabais</ion-option>
+          <ion-option value="autre">Autre</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="card"></ion-icon>
+      </ion-label>
+      <ion-input type="number" placeholder="Prix" [(ngModel)]="deal.prix" name="prix"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="calculator"></ion-icon>
+      </ion-label>
+      <ion-input type="number" placeholder="Réduction" [(ngModel)]="deal.montant_reduction" name="montant_reduction"></ion-input>%
+    </ion-item>
+
+
+    <ion-item>
+      <ion-textarea placeholder="Description" [(ngModel)]="deal.description" name="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="calendar"></ion-icon>
+      </ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY" placeholder="Date de début" [(ngModel)]="deal.datedebut" name="datedebut"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="calendar"></ion-icon>
+      </ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY" placeholder="Date de fin" [(ngModel)]="deal.datefin" name="datefin"></ion-datetime>
+    </ion-item>
+
+    <ion-list>
+      <ion-list-header>
+        Le
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Lundi</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mardi</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mercredi</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Jeudi</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Vendredi</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Samedi</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Dimanche</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Moment de la journée
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Matin</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Midi</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Soir</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+
+    </ion-list>
+
+
+    <div text-center style="margin-top : 30px">
+      <button ion-button color="secondary" type="submit" round>Envoyer le deal</button>
+    </div>
+  </form>
+</ion-content>

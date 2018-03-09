@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar style="background-color: transparent">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="returnToList()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="margin-top:20px">
+  <img src="../../assets/imgs/logo.png" />
+  <ion-icon name="star" style='color: yellow'></ion-icon>
+  <ion-icon name="star" style='color: yellow'></ion-icon>
+  <ion-icon name="star"></ion-icon>
+  <ion-icon name="star"></ion-icon>
+  <ion-icon name="star"></ion-icon>
+  <h1 text-center *ngIf="selectedDeal">
+    {{selectedDeal.nom}}
+  </h1>
+  <p *ngIf="selectedDeal">
+    {{selectedDeal.description}}
+  </p>
+  <p *ngIf="selectedDeal">
+    {{selectedDeal.prix}}
+  </p>
+</ion-content>

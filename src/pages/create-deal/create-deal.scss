@@ -1,0 +1,30 @@
+page-create-deal {
+  ion-label {
+    color: grey;
+    margin-left: 50px;
+  }
+  .column {
+    text-align: center;
+    width: 50%;
+  }
+  .bordered {
+    border-bottom: 1px solid#aaa;
+    border-top: 1px solid #aaa;
+    background-color: white;
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .background-gray {
+      background-color: #eeeeee;
+  }
+  /*.item.item-input {
+    background-color: transparent;
+  }*/
+  .no-validation-line .item-inner {
+    box-shadow: none !important;
+  }
+}
