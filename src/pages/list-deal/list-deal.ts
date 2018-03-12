@@ -14,6 +14,9 @@ import { CreateDealPage } from '../create-deal/create-deal';
 export class ListDealPage {
   deals: any;
 
+  //segment choice eat or drink
+  choice: string = "eat";
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
     this.deals = [{
       id: "a1",
@@ -36,9 +39,10 @@ export class ListDealPage {
     this.restProvider.getDeal()
       .then(data => {
         this.deals = data;
-
-        console.log(this.deals);
-      });
+      })
+      .catch(e => {
+        console.log("getDeal error ", e);
+      })
   }
 
   itemTapped(event, deal) {
@@ -48,7 +52,6 @@ export class ListDealPage {
   }
 
   goAddDeal(){
-    console.log("add deal");
     this.navCtrl.push(CreateDealPage);
   }
 }

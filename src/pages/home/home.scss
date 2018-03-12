@@ -3,9 +3,12 @@ page-home {
     background: url(../../assets/imgs/restau-1.jpg) 0 0 no-repeat;
   }
   img {
-    margin-top: 50px;
+    margin-top: 40px;
   }
   #bouttons {
-    margin-top: 50px;
+    margin-top: 40px;
+  }
+  .no-scroll .scroll-content {
+    overflow: hidden;
   }
 }
