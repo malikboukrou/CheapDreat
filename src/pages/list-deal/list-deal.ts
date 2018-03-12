@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { DealDetailsPage } from '../deal-details/deal-details';
 import { Deal } from '../../models/deal';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateDealPage } from '../create-deal/create-deal';
 
+@IonicPage()
 @Component({
   selector: 'page-list-deal',
   templateUrl: 'list-deal.html'

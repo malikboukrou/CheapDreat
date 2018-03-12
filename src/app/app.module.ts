@@ -4,7 +4,6 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 
 import {DealDetailsPage} from '../pages/deal-details/deal-details';
-import {ListDealPage} from '../pages/list-deal/list-deal';
 import {HomePage} from '../pages/home/home';
 import {CreateAccountPage} from '../pages/create-account/create-account';
 import {ConnexionPage} from '../pages/connexion/connexion';
@@ -16,16 +15,17 @@ import {CreateDealPage} from "../pages/create-deal/create-deal";
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
     MyApp,
     DealDetailsPage,
-    ListDealPage,
     HomePage,
     CreateAccountPage,
     ConnexionPage,
-    CreateDealPage
+    CreateDealPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -36,11 +36,11 @@ import { RestProvider } from '../providers/rest/rest';
   entryComponents: [
     MyApp,
     DealDetailsPage,
-    ListDealPage,
     HomePage,
     CreateAccountPage,
     ConnexionPage,
-    CreateDealPage
+    CreateDealPage,
+    TabsPage
   ],
   providers: [
     StatusBar,

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CreateAccountPage } from '../create-account/create-account';
 import { ConnexionPage } from '../connexion/connexion';
-import { ListDealPage } from '../list-deal/list-deal';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +20,7 @@ export class HomePage {
   }
 
   goWithoutConnect() {
-    this.navCtrl.push(ListDealPage);
+    this.navCtrl.push(TabsPage);
   }
 
   connectFacebook() {

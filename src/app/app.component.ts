@@ -7,6 +7,7 @@ import {ConnexionPage} from '../pages/connexion/connexion';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {CreateDealPage} from '../pages/create-deal/create-deal';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
