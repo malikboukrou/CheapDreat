@@ -2,6 +2,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
+import {Geolocation} from '@ionic-native/geolocation'; 
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+import { GoogleMaps,GoogleMap,GoogleMapsEvent,GoogleMapOptions,CameraPosition,MarkerOptions,Marker} from '@ionic-native/google-maps';
+
 
 import {DealDetailsPage} from '../pages/deal-details/deal-details';
 import {ListDealPage} from '../pages/list-deal/list-deal';
@@ -46,7 +50,10 @@ import { RestProvider } from '../providers/rest/rest';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
+    RestProvider,
+    Geolocation,
+    NativeGeocoder,
+    GoogleMaps
   ]
 })
 export class AppModule {}
