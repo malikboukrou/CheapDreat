@@ -36,10 +36,12 @@ export class ListDealPage {
     }];
     this.getDeal();
   }
+  
   getDeal() {
     this.restProvider.getDeal()
       .then(data => {
         this.deals = data;
+        console.log(data);
       })
       .catch(e => {
         console.log("getDeal error ", e);
@@ -54,5 +56,26 @@ export class ListDealPage {
 
   goAddDeal(){
     this.navCtrl.push(CreateDealPage);
+  }
+
+  // A IMPLEMENTER
+  getItems(ev) {
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      console.log("YOOO ", val);
+      this.deals = this.deals.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+
+  isPhoto(photo){
+    if (photo === undefined){
+      return false;
+    }
+    return true;
   }
 }
