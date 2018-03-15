@@ -18,12 +18,13 @@
   <h1 text-center *ngIf="selectedDeal">
     {{selectedDeal.nom}}
   </h1>
-  <p *ngIf="selectedDeal">
-    {{selectedDeal.description}}
+  <p *ngIf="selectedDeal.description">
+    Description : {{selectedDeal.description}}
   </p>
-  <p *ngIf="selectedDeal">
-    {{selectedDeal.prix}}
+  <p *ngIf="selectedDeal.prix">
+    Prix : {{selectedDeal.prix}}
   </p>
+  
   <div #map id="map"></div> 
 </ion-content>
 

@@ -36,9 +36,9 @@ export class RestProvider {
     });
   }
 
-  addUtilisateur(data) {
+  createClient(data) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/utilisateur', JSON.stringify(data))
+      this.http.post(this.apiUrl+'/CreateClient.php', JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
