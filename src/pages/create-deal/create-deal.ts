@@ -68,7 +68,7 @@ export class CreateDealPage {
     }
   }
 
-  onChange($event) {
-    console.log($event.target.value);
+  onChange() {
+    console.log("onchange");
   }
 }
