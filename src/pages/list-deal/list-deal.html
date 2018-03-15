@@ -21,13 +21,18 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [ngSwitch]="choice">
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list *ngSwitchCase="'eat'">
     <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, deal)" padding>
-      <ion-thumbnail item-start>
+      <ion-thumbnail item-start *ngIf="isPhoto(tab.photo)">
         <img src="../../assets/imgs/logo.png">
       </ion-thumbnail>
-      <ion-icon name="star" style='color: yellow'></ion-icon>
+      <ion-thumbnail item-start *ngIf="!isPhoto(tab.photo)">
+          <ion-icon name="image" style='color: #aaa6a6d3; font-size: 50px'></ion-icon>
+      </ion-thumbnail>
+      <ion-icon name="star" color=primary></ion-icon>
       <ion-icon name="star" style='color: yellow'></ion-icon>
       <ion-icon name="star"></ion-icon>
       <ion-icon name="star"></ion-icon>
@@ -46,7 +51,4 @@
 
   </ion-list>
 
-
 </ion-content>
-
-
