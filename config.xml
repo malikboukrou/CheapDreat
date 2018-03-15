@@ -84,9 +84,9 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-    <plugin name="cordova-plugin-nativegeocoder" spec="^3.1.1" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.2.7">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyC9G7nfUCwvsSs_FQL8p0gZqFgtjsgpvvc" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyCV8EJmmZLULkuW8d2_Sxas73ZpJyQ5pxE" />
     </plugin>
+    <plugin name="cordova-plugin-nativegeocoder" spec="^3.1.1" />
 </widget>

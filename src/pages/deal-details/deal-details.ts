@@ -1,6 +1,5 @@
 import {Component,ViewChild ,ElementRef } from '@angular/core';
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation'; 
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { GoogleMaps,GoogleMap,GoogleMapsEvent,GoogleMapOptions,CameraPosition,MarkerOptions,Marker} from '@ionic-native/google-maps';
 
 import {NavController, NavParams} from 'ionic-angular';
@@ -23,13 +22,13 @@ export class DealDetailsPage {
   map: any;
   deals: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private geolocation : Geolocation,private nativeGeocoder: NativeGeocoder,public googleMaps: GoogleMaps) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private geolocation : Geolocation, public googleMaps: GoogleMaps) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedDeal = navParams.get('deal');
     this.deals = [{
       latitude: "50.6316211",
       longitude: "3.1533357",
- 
+
     },
       {
       latitude :"50.291002291002291002" ,
@@ -56,7 +55,7 @@ export class DealDetailsPage {
 
         this.currentPos = pos;     
 
-        console.log(pos);
+        console.log("lat:"+pos.coords.latitude+"||long:"+pos.coords.longitude);
         //this.forwardGeocoding('Berlin');
         this.addMap(this.deals[0].latitude,this.deals[0].longitude);
 
@@ -67,25 +66,11 @@ export class DealDetailsPage {
 }
 
 ionViewDidEnter(){
- // this.reverseGeoCoding(50,50);
   this.getUserPosition();
 }    
 
-reverseGeoCoding(lat, lng) {
-  this.nativeGeocoder.reverseGeocode(lat, lng).then((resp) => {
-    this.address = resp.thoroughfare +" ," + resp.locality + " ,"+resp.subLocality + " ,"+resp.administrativeArea + " ," +resp.countryName ;
-  })
-}
-
-forwardGeocoding(adresse){
-  this.nativeGeocoder.forwardGeocode(adresse).then((coordinates: NativeGeocoderForwardResult) => {
-    this.latitude= coordinates.latitude+"";
-    this.longitude= coordinates.longitude+"";
-  })
-}
 
 addMarker(){
-  
       let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,

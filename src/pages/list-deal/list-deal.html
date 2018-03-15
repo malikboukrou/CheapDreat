@@ -36,9 +36,9 @@
       <p><span class="note">5.5</span></p><!--{{tab.note}}-->
       <p><span class="nom-enseigne">{{tab.nom}}</span></p>
       <p><span class="description">{{tab.description}}</span></p>
-      <ion-icon name="chatbubbles" margin-top></ion-icon>
+      <ion-icon name="chatbubbles" color=tertiary margin-top></ion-icon><span class="commentaire">3</span>
       <!--{{deal.comments.length}}-->
-      <a float-right margin-top (click)="itemTapped($event, tab)">Allons manger...</a>
+      <a (click)="itemTapped($event, tab)"><span class="manger">Allons manger...</span></a>
     </button>
   </ion-list>
 
