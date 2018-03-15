@@ -8,9 +8,8 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'create-deal.html'
 })
 
+
 export class CreateDealPage {
-  reducType: string;
-  eatOrDrink: string;
   deal = {
     nom: '',
     adresse: '',
@@ -26,32 +25,46 @@ export class CreateDealPage {
     reduction_type: '',
     montant_reduction: '',
     description: '',
-    prix: ''
+    prix: '',
+    type: ''
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
 
+  jours: any;
+  moments: any; 
+
+  colorInactive: string = "#bbb";
+  colorActive: string = "#FF0023";
+  buttonEat: string = this.colorInactive;
+  buttonDrink: string = this.colorInactive;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
+    this.jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    this.moments = ['Matin', 'Midi', 'Soir'];
   }
 
   saveDeal() {
+    let jours: string[];
+
     this.restProvider.addDeal(this.deal).then((result) => {
-      console.log(result);
+      console.log("result: ", result);
       this.navCtrl.pop();
     }, (err) => {
-      console.log(err);
+      console.log("error: ", err);
+      this.navCtrl.pop();
     });
   }
 
-  showSelectValue(type: string) {
-    console.log("type:"+type);
-  }
 
   setType(choice: string){
     if (choice === 'eat'){
-      console.log("eat");
+      this.buttonEat = this.colorActive;
+      this.buttonDrink = this.colorInactive;
+      this.deal.type = "eat";
     }
     else if (choice === 'drink'){
-      console.log("drink");
+      this.buttonEat = this.colorInactive;
+      this.buttonDrink = this.colorActive;
+      this.deal.type = "drink";
     }
-    else console.log("OTHER");
   }
 }

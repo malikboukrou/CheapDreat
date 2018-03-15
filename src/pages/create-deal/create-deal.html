@@ -8,18 +8,18 @@
 </ion-header>
 
 <ion-content class="background-gray">
-  <form (ngSubmit)="saveDeal()">
+  <form>
 
     <ion-label style="margin-left: 15px">TYPE DE DEAL</ion-label>
 
     <div class="row">
       <div class="column bordered" style="border-right: 1px solid #aaa;">
-        <button ion-button clear icon-only (click)="setType('eat')">
+        <button ion-button clear icon-only (click)="setType('eat')" [ngStyle]="{'color': buttonEat}">
           <ion-icon name="restaurant"></ion-icon>
         </button>
       </div>
       <div class="column bordered">
-        <button ion-button clear icon-only (click)="setType('drink')">
+        <button ion-button clear icon-only (click)="setType('drink')" [ngStyle]="{'color': buttonDrink}">
           <ion-icon name="wine"></ion-icon>
         </button>
       </div>
@@ -66,10 +66,10 @@
 
     <ion-label style="margin-left: 15px">DÉTAILS DU DEAL</ion-label>
 
-    <ion-list>
+    <ion-list style="margin-bottom: 0px;">
       <ion-item>
         <ion-label>Type de réduction</ion-label>
-        <ion-select [(ngModel)]="reduction_type" name="deal.reduction_type" ng-change="showSelectValue(reducType)">
+        <ion-select [(ngModel)]="deal.reduction_type" name="reduction_type">
           <ion-option value="reduction">Réduction</ion-option>
           <ion-option value="rabais">Rabais</ion-option>
           <ion-option value="autre">Autre</ion-option>
@@ -88,7 +88,7 @@
       <ion-label>
         <ion-icon name="calculator"></ion-icon>
       </ion-label>
-      <ion-input type="number" placeholder="Réduction" [(ngModel)]="deal.montant_reduction" name="montant_reduction"></ion-input>%
+      <ion-input class="reduc" type="number" placeholder="Réduction" [(ngModel)]="deal.montant_reduction" name="montant_reduction"></ion-input>%
     </ion-item>
 
 
@@ -112,42 +112,12 @@
 
     <ion-list>
       <ion-list-header>
-        Le
+        Jours deal actif
       </ion-list-header>
 
-      <ion-item>
-        <ion-label>Lundi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Mardi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Mercredi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Jeudi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Vendredi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Samedi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Dimanche</ion-label>
-        <ion-checkbox></ion-checkbox>
+      <ion-item *ngFor="let j of jours">
+        <ion-label>{{j}}</ion-label>
+        <ion-checkbox checked="true"></ion-checkbox>
       </ion-item>
 
     </ion-list>
@@ -157,26 +127,18 @@
         Moment de la journée
       </ion-list-header>
 
-      <ion-item>
-        <ion-label>Matin</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Midi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Soir</ion-label>
-        <ion-checkbox></ion-checkbox>
+      <ion-item *ngFor="let m of moments">
+        <ion-label>{{m}}</ion-label>
+        <ion-checkbox checked="true"></ion-checkbox>
       </ion-item>
 
     </ion-list>
 
 
-    <div text-center style="margin-top : 30px">
-      <button ion-button color="secondary" type="submit" round>Envoyer le deal</button>
+    <div text-center margin>
+      <button ion-button block color="secondary" (click)="saveDeal()">
+        <ion-icon name="share"></ion-icon>&emsp;Envoyer le deal
+      </button>
     </div>
   </form>
 </ion-content>

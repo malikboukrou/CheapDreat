@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CreateAccountPage } from '../create-account/create-account';
 import { ConnexionPage } from '../connexion/connexion';
@@ -20,7 +20,7 @@ export class HomePage {
   }
 
   goWithoutConnect() {
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.push(TabsPage, );
   }
 
   connectFacebook() {

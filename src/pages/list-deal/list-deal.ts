@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, List } from 'ionic-angular';
 
 import { DealDetailsPage } from '../deal-details/deal-details';
 import { Deal } from '../../models/deal';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateDealPage } from '../create-deal/create-deal';
+import { MyPopOverPage } from '../my-pop-over/my-pop-over';
+
 
 @IonicPage()
 @Component({
@@ -18,7 +20,8 @@ export class ListDealPage {
   //segment choice eat or drink
   choice: string = "eat";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,
+  public popoverCtrl: PopoverController) {
     this.deals = [{
       id: "a1",
       nom: "Domino's",
@@ -77,5 +80,10 @@ export class ListDealPage {
       return false;
     }
     return true;
+  }
+
+  presentPopover() {
+    let popover = this.popoverCtrl.create(MyPopOverPage);
+    popover.present();
   }
 }
