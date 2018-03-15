@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 
-import {NavController, NavParams} from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 @Component({
   selector: 'page-create-deal',
@@ -30,7 +30,7 @@ export class CreateDealPage {
   };
 
   jours: any;
-  moments: any; 
+  moments: any;
 
   colorInactive: string = "#bbb";
   colorActive: string = "#FF0023";
@@ -55,16 +55,20 @@ export class CreateDealPage {
   }
 
 
-  setType(choice: string){
-    if (choice === 'eat'){
+  setType(choice: string) {
+    if (choice === 'eat') {
       this.buttonEat = this.colorActive;
       this.buttonDrink = this.colorInactive;
       this.deal.type = "eat";
     }
-    else if (choice === 'drink'){
+    else if (choice === 'drink') {
       this.buttonEat = this.colorInactive;
       this.buttonDrink = this.colorActive;
       this.deal.type = "drink";
     }
+  }
+
+  onChange($event) {
+    console.log($event.target.value);
   }
 }

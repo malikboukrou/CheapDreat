@@ -1,3 +1,22 @@
 page-list-deal {
-
+  .note {
+    padding: 0 10px 6px;
+    vertical-align: top;
+    background: #097DB2;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+  }
+  .nom-enseigne {
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  .description {
+    color: #232323;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
 }

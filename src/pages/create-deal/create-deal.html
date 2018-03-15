@@ -129,7 +129,7 @@
 
       <ion-item *ngFor="let m of moments">
         <ion-label>{{m}}</ion-label>
-        <ion-checkbox checked="true"></ion-checkbox>
+        <ion-checkbox checked="true" ionChange="onChange($event)"></ion-checkbox>
       </ion-item>
 
     </ion-list>
