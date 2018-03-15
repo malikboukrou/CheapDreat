@@ -25,7 +25,7 @@
 <ion-content [ngSwitch]="choice">
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list *ngSwitchCase="'eat'">
-    <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, deal)" padding>
+    <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, tab)" padding>
       <ion-thumbnail item-start *ngIf="isPhoto(tab.photo)">
         <img src="../../assets/imgs/logo.png">
       </ion-thumbnail>
@@ -43,7 +43,7 @@
       </p>
       <ion-icon name="chatbubbles" margin-top></ion-icon>
       <!--{{deal.comments.length}}-->
-      <a float-right margin-top (click)="itemTapped($event, deal)">Allons manger...</a>
+      <a float-right margin-top (click)="itemTapped($event, tab)">Allons manger...</a>
     </button>
   </ion-list>
 
