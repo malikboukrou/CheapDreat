@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
 import { DealDetailsPage } from '../deal-details/deal-details';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateDealPage } from '../create-deal/create-deal';
-import { MyPopOverPage } from '../my-pop-over/my-pop-over';
+
+@Component({
+  template: `
+    <span>WOOOORK</span>
+  `
+})
+export class PopoverPage {
+  constructor(private navParams: NavParams) {
+  }
+}
 
 
 @IonicPage()
@@ -79,9 +88,13 @@ export class ListDealPage {
     return true;
   }
 
-  presentPopover() {
-    let popover = this.popoverCtrl.create(MyPopOverPage);
-    popover.present();
+  presentPopover(ev) {
+
+    let popover = this.popoverCtrl.create(PopoverPage);
+
+    popover.present({
+      ev: ev
+    });
   }
 
   ionViewDidEnter() {

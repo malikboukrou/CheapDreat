@@ -31,7 +31,7 @@ export class RestProvider {
       this.http.get(this.apiUrl+'/Read.php?type=' + choice).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        console.log("err:"+err.status);
       });
     });
   }

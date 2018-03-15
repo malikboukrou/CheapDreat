@@ -96,7 +96,7 @@
       <ion-textarea placeholder="Description" [(ngModel)]="deal.description" name="description"></ion-textarea>
     </ion-item>
 
-    <ion-list style="margin-bottom: 0px;">
+    <ion-list style="margin-bottom: 0px;" *ngIf="eat === true">
       <ion-item>
         <ion-label>Catégorie</ion-label>
         <ion-select [(ngModel)]="deal.categorie_restaurant" name="categorie_restaurant">

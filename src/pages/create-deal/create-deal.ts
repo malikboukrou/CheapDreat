@@ -40,13 +40,14 @@ export class CreateDealPage {
   vendredi = true;
   samedi = true;
   dimanche = true;
+  eat: boolean = true;
 
   colorInactive: string = "#bbb";
   colorActive: string = "#FF0023";
   buttonEat: string = this.colorInactive;
   buttonDrink: string = this.colorInactive;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) { }
 
   saveDeal() {
     this.parseDays();
@@ -67,15 +68,21 @@ export class CreateDealPage {
       this.buttonEat = this.colorActive;
       this.buttonDrink = this.colorInactive;
       this.deal.type = "eat";
+      this.eat = true;
+      console.log("eat:"+this.eat);
     }
     else if (choice === 'drink') {
       this.buttonEat = this.colorInactive;
       this.buttonDrink = this.colorActive;
       this.deal.type = "drink";
+      this.eat = false;
+      
+      console.log("eat:"+this.eat);
     }
+    this.refreshPage();
   }
 
-  parseDays(){
+  parseDays() {
     var jours = "";
     if (this.lundi) jours += "1";
     if (this.mardi) jours += "2";
@@ -87,12 +94,28 @@ export class CreateDealPage {
     this.deal.jour = jours;
   }
 
-  parseMoment(){
+  parseMoment() {
     var moments = "";
     if (this.midi) moments += "1";
     if (this.matin) moments += "2";
     if (this.soir) moments += "3";
     this.deal.moment = moments;
+  }
+
+  ionViewDidEnter() {
+    this.setType('eat');
+  }
+
+  ionViewWillEnter() {
+    this.doNothing();
+  }
+
+  refreshPage() {
+    this.ionViewWillEnter();
+  }
+
+  doNothing(){
+
   }
 
 }
