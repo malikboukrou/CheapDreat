@@ -8,8 +8,8 @@
     </ion-buttons>
 
     <ion-segment [(ngModel)]="choice">
-      <ion-segment-button value="eat">J'ai faim</ion-segment-button>
-      <ion-segment-button value="drink">J'ai soif</ion-segment-button>
+      <ion-segment-button value="eat" (click)="getDeal()">J'ai faim</ion-segment-button>
+      <ion-segment-button value="drink" (click)="getDeal()">J'ai soif</ion-segment-button>
     </ion-segment>
 
     <ion-buttons end>

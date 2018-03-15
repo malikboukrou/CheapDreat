@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
-import { IonicPage, NavController, NavParams, PopoverController, List } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
 import { DealDetailsPage } from '../deal-details/deal-details';
-import { Deal } from '../../models/deal';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateDealPage } from '../create-deal/create-deal';
 import { MyPopOverPage } from '../my-pop-over/my-pop-over';
@@ -16,28 +15,26 @@ import { MyPopOverPage } from '../my-pop-over/my-pop-over';
 })
 export class ListDealPage {
   deals: any;
-
   //segment choice eat or drink
   choice: string = "eat";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,
   public popoverCtrl: PopoverController) {
     this.deals = [{
-      id: "a1",
-      nom: "Domino's",
-      adresse: "10 rue du val, 59000 Lille",
-      tel: "0650505050",
-      description: "bon deal",
-      note: [5, 6, 9],
-      datedeb: "10/10/2010",
-      datefin: "11/11/2011",
-      jours: ["lundi", "mercredi"],
-      moment: "midi",
-      type: "Rabais",
-      prix: 15,
-      photos: null,
+      id: '',
+      nom: '',
+      adresse: '',
+      tel: '',
+      description: '',
+      note: '',
+      datedeb: '',
+      datefin: '',
+      jours: '',
+      moment: '',
+      type: '',
+      prix: '',
+      photos: '',
     }];
-    this.getDeal();
   }
   
   getDeal() {
@@ -85,5 +82,9 @@ export class ListDealPage {
   presentPopover() {
     let popover = this.popoverCtrl.create(MyPopOverPage);
     popover.present();
+  }
+
+  ionViewDidEnter() {
+    this.getDeal();
   }
 }

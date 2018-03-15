@@ -15,7 +15,8 @@ export class CreateDealPage {
     adresse: '',
     ville: '',
     codepostal: '',
-    //lat et long
+    latitude: '',
+    longitude: '',
     telephone: '',
     datedebut: '',
     datefin: '',
@@ -29,22 +30,28 @@ export class CreateDealPage {
     type: ''
   };
 
-  jours: any;
-  moments: any;
+  matin = true;
+  midi = true;
+  soir = true;
+  lundi = true;
+  mardi = true;
+  mercredi = true;
+  jeudi = true;
+  vendredi = true;
+  samedi = true;
+  dimanche = true;
 
   colorInactive: string = "#bbb";
   colorActive: string = "#FF0023";
   buttonEat: string = this.colorInactive;
   buttonDrink: string = this.colorInactive;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
-    this.jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-    this.moments = ['Matin', 'Midi', 'Soir'];
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {  }
 
   saveDeal() {
-    let jours: string[];
-
+    this.parseDays();
+    this.parseMoment();
+    console.log(this.deal);
     this.restProvider.addDeal(this.deal).then((result) => {
       console.log("result: ", result);
       this.navCtrl.pop();
@@ -68,7 +75,24 @@ export class CreateDealPage {
     }
   }
 
-  onChange() {
-    console.log("onchange");
+  parseDays(){
+    var jours = "";
+    if (this.lundi) jours += "1";
+    if (this.mardi) jours += "2";
+    if (this.mercredi) jours += "3";
+    if (this.jeudi) jours += "4";
+    if (this.vendredi) jours += "5";
+    if (this.samedi) jours += "6";
+    if (this.dimanche) jours += "7";
+    this.deal.jour = jours;
   }
+
+  parseMoment(){
+    var moments = "";
+    if (this.midi) moments += "1";
+    if (this.matin) moments += "2";
+    if (this.soir) moments += "3";
+    this.deal.moment = moments;
+  }
+
 }

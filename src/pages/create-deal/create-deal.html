@@ -96,6 +96,20 @@
       <ion-textarea placeholder="Description" [(ngModel)]="deal.description" name="description"></ion-textarea>
     </ion-item>
 
+    <ion-list style="margin-bottom: 0px;">
+      <ion-item>
+        <ion-label>Catégorie</ion-label>
+        <ion-select [(ngModel)]="deal.categorie_restaurant" name="categorie_restaurant">
+          <ion-option value="pizzeria">Pizzeria</ion-option>
+          <ion-option value="indien">Indien</ion-option>
+          <ion-option value="asiatique">Asiatique</ion-option>
+          <ion-option value="fast-food">Fast-food</ion-option>
+          <ion-option value="français">Français</ion-option>
+          <ion-option value="boulangerie">Boulangerie</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
     <ion-item>
       <ion-label>
         <ion-icon name="calendar"></ion-icon>
@@ -109,36 +123,66 @@
       </ion-label>
       <ion-datetime displayFormat="DD MMM YYYY" placeholder="Date de fin" [(ngModel)]="deal.datefin" name="datefin"></ion-datetime>
     </ion-item>
-
-    <ion-list>
-      <ion-list-header>
-        Jours deal actif
-      </ion-list-header>
-
-      <ion-item *ngFor="let j of jours">
-        <ion-label>{{j}}</ion-label>
-        <ion-checkbox checked="true"></ion-checkbox>
-      </ion-item>
-
-    </ion-list>
-
-    <ion-list>
-      <ion-list-header>
-        Moment de la journée
-      </ion-list-header>
-
-      <ion-item *ngFor="let m of moments">
-        <ion-label>{{m}}</ion-label>
-        <ion-checkbox checked="true" (ionChange)="onChange()"></ion-checkbox>
-      </ion-item>
-
-    </ion-list>
-
-
-    <div text-center margin>
-      <button ion-button block color="secondary" (click)="saveDeal()">
-        <ion-icon name="share"></ion-icon>&emsp;Envoyer le deal
-      </button>
-    </div>
   </form>
+
+  <ion-list style="margin-top: 10px;">
+    <ion-list-header>
+      Jours deal actif
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Lundi</ion-label>
+      <ion-checkbox [(ngModel)]="lundi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mardi</ion-label>
+      <ion-checkbox [(ngModel)]="mardi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mercredi</ion-label>
+      <ion-checkbox  [(ngModel)]="mercredi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Jeudi</ion-label>
+      <ion-checkbox [(ngModel)]="jeudi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Vendredi</ion-label>
+      <ion-checkbox [(ngModel)]="vendredi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Samedi</ion-label>
+      <ion-checkbox  [(ngModel)]="samedi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dimanche</ion-label>
+      <ion-checkbox  [(ngModel)]="dimanche"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list style="margin-top: 10px;">
+    <ion-list-header>
+      Moment de la journée
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Matin</ion-label>
+      <ion-checkbox [(ngModel)]="matin" ></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Midi</ion-label>
+      <ion-checkbox [(ngModel)]="midi" ></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Soir</ion-label>
+      <ion-checkbox [(ngModel)]="soir" ></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+
+  <div text-center margin>
+    <button ion-button block color="secondary" (click)="saveDeal()">
+      <ion-icon name="share"></ion-icon>&emsp;Envoyer le deal
+    </button>
+  </div>
+
 </ion-content>
