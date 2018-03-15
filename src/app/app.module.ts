@@ -17,7 +17,6 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {CreateDealPage} from "../pages/create-deal/create-deal";
 
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
 import { TabsPage } from '../pages/tabs/tabs';
 

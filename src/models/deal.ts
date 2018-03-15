@@ -13,5 +13,6 @@ export interface Deal {
     reduction_type: string,
     montant_reduction: number,
     description: string,
-    prix: number
+    prix: number, 
+    type: string
   };

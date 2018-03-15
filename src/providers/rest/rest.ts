@@ -11,9 +11,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RestProvider {
   apiUrl = 'https://rebeudtr.000webhostapp.com';
+  
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
   }
+
   getUtilisateur() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+'/utilisateur').subscribe(data => {
@@ -24,9 +26,9 @@ export class RestProvider {
     });
   }
 
-  getDeal() {
+  getDeal(choice:String) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/Read.php').subscribe(data => {
+      this.http.get(this.apiUrl+'/Read.php?type=' + choice).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -55,6 +57,4 @@ export class RestProvider {
         });
     });
   }
-
-
 }

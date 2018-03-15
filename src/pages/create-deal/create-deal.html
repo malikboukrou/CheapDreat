@@ -8,18 +8,18 @@
 </ion-header>
 
 <ion-content class="background-gray">
-  <form (ngSubmit)="saveDeal()">
+  <form>
 
     <ion-label style="margin-left: 15px">TYPE DE DEAL</ion-label>
 
     <div class="row">
       <div class="column bordered" style="border-right: 1px solid #aaa;">
-        <button ion-button clear icon-only (click)="setType('eat')">
+        <button ion-button clear icon-only (click)="setType('eat')" [ngStyle]="{'color': buttonEat}">
           <ion-icon name="restaurant"></ion-icon>
         </button>
       </div>
       <div class="column bordered">
-        <button ion-button clear icon-only (click)="setType('drink')">
+        <button ion-button clear icon-only (click)="setType('drink')" [ngStyle]="{'color': buttonDrink}">
           <ion-icon name="wine"></ion-icon>
         </button>
       </div>
@@ -66,10 +66,10 @@
 
     <ion-label style="margin-left: 15px">DÉTAILS DU DEAL</ion-label>
 
-    <ion-list>
+    <ion-list style="margin-bottom: 0px;">
       <ion-item>
         <ion-label>Type de réduction</ion-label>
-        <ion-select [(ngModel)]="reduction_type" name="deal.reduction_type" ng-change="showSelectValue(reducType)">
+        <ion-select [(ngModel)]="deal.reduction_type" name="reduction_type">
           <ion-option value="reduction">Réduction</ion-option>
           <ion-option value="rabais">Rabais</ion-option>
           <ion-option value="autre">Autre</ion-option>
@@ -88,13 +88,27 @@
       <ion-label>
         <ion-icon name="calculator"></ion-icon>
       </ion-label>
-      <ion-input type="number" placeholder="Réduction" [(ngModel)]="deal.montant_reduction" name="montant_reduction"></ion-input>%
+      <ion-input class="reduc" type="number" placeholder="Réduction" [(ngModel)]="deal.montant_reduction" name="montant_reduction"></ion-input>%
     </ion-item>
 
 
     <ion-item>
       <ion-textarea placeholder="Description" [(ngModel)]="deal.description" name="description"></ion-textarea>
     </ion-item>
+
+    <ion-list style="margin-bottom: 0px;">
+      <ion-item>
+        <ion-label>Catégorie</ion-label>
+        <ion-select [(ngModel)]="deal.categorie_restaurant" name="categorie_restaurant">
+          <ion-option value="pizzeria">Pizzeria</ion-option>
+          <ion-option value="indien">Indien</ion-option>
+          <ion-option value="asiatique">Asiatique</ion-option>
+          <ion-option value="fast-food">Fast-food</ion-option>
+          <ion-option value="français">Français</ion-option>
+          <ion-option value="boulangerie">Boulangerie</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 
     <ion-item>
       <ion-label>
@@ -109,74 +123,66 @@
       </ion-label>
       <ion-datetime displayFormat="DD MMM YYYY" placeholder="Date de fin" [(ngModel)]="deal.datefin" name="datefin"></ion-datetime>
     </ion-item>
-
-    <ion-list>
-      <ion-list-header>
-        Le
-      </ion-list-header>
-
-      <ion-item>
-        <ion-label>Lundi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Mardi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Mercredi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Jeudi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Vendredi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Samedi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Dimanche</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-    </ion-list>
-
-    <ion-list>
-      <ion-list-header>
-        Moment de la journée
-      </ion-list-header>
-
-      <ion-item>
-        <ion-label>Matin</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Midi</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Soir</ion-label>
-        <ion-checkbox></ion-checkbox>
-      </ion-item>
-
-    </ion-list>
-
-
-    <div text-center style="margin-top : 30px">
-      <button ion-button color="secondary" type="submit" round>Envoyer le deal</button>
-    </div>
   </form>
+
+  <ion-list style="margin-top: 10px;">
+    <ion-list-header>
+      Jours deal actif
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Lundi</ion-label>
+      <ion-checkbox [(ngModel)]="lundi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mardi</ion-label>
+      <ion-checkbox [(ngModel)]="mardi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mercredi</ion-label>
+      <ion-checkbox  [(ngModel)]="mercredi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Jeudi</ion-label>
+      <ion-checkbox [(ngModel)]="jeudi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Vendredi</ion-label>
+      <ion-checkbox [(ngModel)]="vendredi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Samedi</ion-label>
+      <ion-checkbox  [(ngModel)]="samedi"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dimanche</ion-label>
+      <ion-checkbox  [(ngModel)]="dimanche"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list style="margin-top: 10px;">
+    <ion-list-header>
+      Moment de la journée
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Matin</ion-label>
+      <ion-checkbox [(ngModel)]="matin" ></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Midi</ion-label>
+      <ion-checkbox [(ngModel)]="midi" ></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Soir</ion-label>
+      <ion-checkbox [(ngModel)]="soir" ></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+
+  <div text-center margin>
+    <button ion-button block color="secondary" (click)="saveDeal()">
+      <ion-icon name="share"></ion-icon>&emsp;Envoyer le deal
+    </button>
+  </div>
+
 </ion-content>

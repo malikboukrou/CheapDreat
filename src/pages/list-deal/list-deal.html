@@ -2,14 +2,14 @@
   <ion-toolbar color=tertiary>
 
     <ion-buttons start>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="options"></ion-icon>
       </button>
     </ion-buttons>
 
     <ion-segment [(ngModel)]="choice">
-      <ion-segment-button value="eat">Eat</ion-segment-button>
-      <ion-segment-button value="drink">Drink</ion-segment-button>
+      <ion-segment-button value="eat" (click)="getDeal()">J'ai faim</ion-segment-button>
+      <ion-segment-button value="drink" (click)="getDeal()">J'ai soif</ion-segment-button>
     </ion-segment>
 
     <ion-buttons end>
@@ -30,20 +30,24 @@
         <img src="../../assets/imgs/logo.png">
       </ion-thumbnail>
       <ion-thumbnail item-start *ngIf="!isPhoto(tab.photo)">
-          <ion-icon name="image" style='color: #aaa6a6d3; font-size: 50px'></ion-icon>
+        <ion-icon name="image" style='color: #aaa6a6d3; font-size: 50px'></ion-icon>
       </ion-thumbnail>
-      <ion-icon name="star" color=primary></ion-icon>
-      <ion-icon name="star" style='color: yellow'></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
+      
+      <p><span class="note">5.5</span></p><!--{{tab.note}}-->
+      <p><span class="nom-enseigne">{{tab.nom}}</span></p>
+      <p><span class="description">{{tab.description}}</span></p>
+      <ion-icon name="chatbubbles" color=tertiary margin-top></ion-icon><span class="commentaire">3</span>
       <!--{{deal.comments.length}}-->
+<<<<<<< HEAD
       <p>
         {{tab.nom}}
       </p>
       <ion-icon name="chatbubbles" margin-top></ion-icon>
       <!--{{deal.comments.length}}-->
       <a float-right margin-top (click)="itemTapped($event, tab)">Allons manger...</a>
+=======
+      <a (click)="itemTapped($event, tab)"><span class="manger">Allons manger...</span></a>
+>>>>>>> ab0114c20da9263b0caec6a4ebb8f93ad7fec37d
     </button>
   </ion-list>
 
