@@ -21,6 +21,16 @@ dist/
 node_modules/
 tmp/
 temp/
+<<<<<<< HEAD
+hooks/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+www/
+platforms/
+=======
+>>>>>>> f6106e95e7ed8170bbb30a5926c4e7c5573d9f81
 $RECYCLE.BIN/
 www/
 
