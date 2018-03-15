@@ -41,7 +41,7 @@ export class ListDealPage {
   }
   
   getDeal() {
-    this.restProvider.getDeal()
+    this.restProvider.getDeal(this.choice)
       .then(data => {
         this.deals = data;
         console.log(data);

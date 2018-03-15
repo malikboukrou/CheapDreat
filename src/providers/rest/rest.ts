@@ -24,9 +24,9 @@ export class RestProvider {
     });
   }
 
-  getDeal() {
+  getDeal(choice:String) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/Read.php').subscribe(data => {
+      this.http.get(this.apiUrl+'/Read.php?type=', choice).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
