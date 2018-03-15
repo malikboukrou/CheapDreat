@@ -19,13 +19,17 @@ page-create-deal {
     clear: both;
   }
   .background-gray {
-      background-color: #eeeeee;
+    background-color: #eeeeee;
   }
-  /*.item.item-input {
-    background-color: transparent;
-  }*/
-  .no-validation-line .item-inner {
-    box-shadow: none !important;
+  .price {
+    position: relative;
+    float: left;
+  }
+  .price:after {
+    position: absolute;
+    right: 0;
+    margin-top: 10px;
+    content: '€';
   }
 
 

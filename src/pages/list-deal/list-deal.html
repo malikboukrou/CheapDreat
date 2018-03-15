@@ -1,23 +1,28 @@
 <ion-header>
   <ion-toolbar color=tertiary>
-    <ion-segment>
-      <ion-segment-button value="manger">
-        Eat
-      </ion-segment-button>
-      <ion-segment-button value="boire">
-        Drink
-      </ion-segment-button>
+
+    <ion-buttons start>
+      <button ion-button icon-only>
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-segment [(ngModel)]="choice">
+      <ion-segment-button value="eat">Eat</ion-segment-button>
+      <ion-segment-button value="drink">Drink</ion-segment-button>
     </ion-segment>
+
     <ion-buttons end>
       <button ion-button icon-only (click)="goAddDeal()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
+<ion-content [ngSwitch]="choice">
+  <ion-list *ngSwitchCase="'eat'">
     <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, deal)" padding>
       <ion-thumbnail item-start>
         <img src="../../assets/imgs/logo.png">
@@ -36,4 +41,12 @@
       <a float-right margin-top (click)="itemTapped($event, deal)">Allons manger...</a>
     </button>
   </ion-list>
+
+  <ion-list *ngSwitchCase="'drink'">
+
+  </ion-list>
+
+
 </ion-content>
+
+

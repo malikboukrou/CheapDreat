@@ -1,18 +1,22 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { DealDetailsPage } from '../deal-details/deal-details';
 import { Deal } from '../../models/deal';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateDealPage } from '../create-deal/create-deal';
 
+@IonicPage()
 @Component({
   selector: 'page-list-deal',
   templateUrl: 'list-deal.html'
 })
 export class ListDealPage {
   deals: any;
+
+  //segment choice eat or drink
+  choice: string = "eat";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
     this.deals = [{
@@ -36,9 +40,10 @@ export class ListDealPage {
     this.restProvider.getDeal()
       .then(data => {
         this.deals = data;
-
-        console.log(this.deals);
-      });
+      })
+      .catch(e => {
+        console.log("getDeal error ", e);
+      })
   }
 
   itemTapped(event, deal) {
@@ -48,7 +53,6 @@ export class ListDealPage {
   }
 
   goAddDeal(){
-    console.log("add deal");
     this.navCtrl.push(CreateDealPage);
   }
 }

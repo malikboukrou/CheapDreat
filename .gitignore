@@ -4,24 +4,24 @@
 *~
 *.sw[mnpcod]
 *.log
+*.lock
 *.tmp
 *.tmp.*
 log.txt
 *.sublime-project
 *.sublime-workspace
-.vscode/
-npm-debug.log*
 
 .idea/
 .sourcemaps/
+.vscode/
 .sass-cache/
-.tmp/
 .versions/
 coverage/
 dist/
 node_modules/
 tmp/
 temp/
+<<<<<<< HEAD
 hooks/
 platforms/
 plugins/
@@ -29,8 +29,31 @@ plugins/android.json
 plugins/ios.json
 www/
 platforms/
+=======
+>>>>>>> f6106e95e7ed8170bbb30a5926c4e7c5573d9f81
 $RECYCLE.BIN/
+www/
 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+.env
+
+.package.tmp.json
+
+src/themes/version.scss
+scripts/e2e/webpackEntryPoints.json
+scripts/build/e2e-generated-tsconfig.json
+*.css.ts
+
+# demo stuff
+demos/node_modules
+demos/polyfills
+demos/css
+demos/fonts
+demos/src/**/*.js
+demos/src/**/*.map
+demos/src/**/*.ngfactory.ts
+demos/src/**/*.d.ts
+demos/src/**/*.metadata.json
+demos/src/**/*.css.shim.ts
