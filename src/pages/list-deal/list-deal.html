@@ -31,12 +31,12 @@
 
   <ion-list>
     <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, tab)" padding>
-      <ion-thumbnail item-start *ngIf="isPhoto(tab.photo)">
-        <img src="../../assets/imgs/logo.png">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/restau-3.jpg" />
       </ion-thumbnail>
-      <ion-thumbnail item-start *ngIf="!isPhoto(tab.photo)">
+      <!-- <ion-thumbnail item-start *ngIf="!isPhoto(tab.photo)">
         <ion-icon name="image" style='color: #aaa6a6d3; font-size: 50px'></ion-icon>
-      </ion-thumbnail>
+      </ion-thumbnail> -->
 
       <p>
         <span class="note">5.5</span>

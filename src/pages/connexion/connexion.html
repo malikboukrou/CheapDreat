@@ -9,21 +9,20 @@
 
 <ion-content id="restau-2">
   <div style="margin-top : 100px">
-    <form padding (ngSubmit)="connect()">
+    <form padding>
 
       <ion-item>
         <ion-label color="primary" floating>Email ou Pseudo</ion-label>
-        <ion-input type="text" [(ngModel)]="user.identifiant"  name="identifiant"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.identifiant" name="identifiant"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label color="primary" floating>Mot de passe</ion-label>
-        <!--[(ngModel)]="user.mdp"-->
-        <ion-input type="text" [(ngModel)]="user.mdp"  name="mdp"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.mdp" name="mdp"></ion-input>
       </ion-item>
 
       <div text-center>
-        <button ion-button color="secondary" type="submit" round center style="margin-top:50px">S'enregistrer</button>
+        <button ion-button color="secondary" (click)="connect()" block center style="margin-top:50px">S'enregistrer</button>
       </div>
 
     </form>

@@ -1,11 +1,19 @@
 <ion-header>
 
   <ion-navbar color=tertiary>
+    <ion-title>
+      Ajouter commentaire
+    </ion-title>
     <ion-buttons start>
-      <button ion-button (click)="close()">Close</button>
+      <button ion-button icon-only clear color=primary (click)="closeM()">
+        <ion-icon name="close" class="icone" ></ion-icon>
+      </button>
     </ion-buttons>
+
     <ion-buttons end>
-      <button ion-button (click)="closeModal()">Commenter</button>
+      <button ion-button icon-only clear color=secondary (click)="closeModal()">
+        <ion-icon name="checkmark" class="icone" ></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 

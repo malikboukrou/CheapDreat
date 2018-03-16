@@ -250,6 +250,10 @@
     </ion-item>
   </ion-list>
 
+  <button ion-button clear icon-only (click)="goCamera()">
+    <ion-icon name="camera"></ion-icon>
+  </button>
+
 
   <div text-center margin>
     <button ion-button block color="secondary" [disabled]="!createDealForm.valid" (click)="saveDeal()">

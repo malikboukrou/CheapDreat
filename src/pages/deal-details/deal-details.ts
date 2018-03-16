@@ -25,9 +25,11 @@ export class DealDetailsPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   deals: any;
+  favori: any;
+  favorized: boolean = true;
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider, public navParams: NavParams,
-     private geolocation: Geolocation, public googleMaps: GoogleMaps, public modalCtrl: ModalController) {
+    private geolocation: Geolocation, public googleMaps: GoogleMaps, public modalCtrl: ModalController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedDeal = navParams.get('deal');
     this.deals = [{
@@ -44,6 +46,7 @@ export class DealDetailsPage {
       longitude: "3.177846999999929",
     }
     ];
+    this.initFav();
   }
 
   returnToList() {
@@ -116,10 +119,31 @@ export class DealDetailsPage {
   }
 
   addFavorite() {
-    this.restProvider.addFavorite(this.selectedDeal.id, "")//manque userId
+    this.restProvider.addFavorite(this.selectedDeal.id_deal, this.restProvider.getUserId())//manque userId
       .then(data => {
-        this.deals = data;
-        console.log(data);
+        this.favori = data;
+        if (this.favori.message.includes("Creation")) {
+          this.favorized = true;
+        }
+        else {
+          this.favorized = false;
+        }
+      })
+      .catch(e => {
+        console.log("getDeal error ", e);
+      })
+  }
+
+  initFav() {
+    this.restProvider.getFavorites(this.restProvider.getUserId())
+      .then(data => {
+        this.favori = data;
+        if (this.favori.message.includes("Aucun")) {
+          this.favorized = false;
+        }
+        else {
+          this.favorized = true;
+        }
       })
       .catch(e => {
         console.log("getDeal error ", e);

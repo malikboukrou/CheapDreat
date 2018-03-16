@@ -76,6 +76,7 @@ export class ListDealPage {
 
   ionViewDidEnter() {
     this.getUserPosition();
+    console.log("userId:"+this.restProvider.getUserId());
   }
 
   doRefresh(refresher) {

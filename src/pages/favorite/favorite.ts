@@ -16,12 +16,15 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class FavoritePage {
   favorites : any;
+  favorized: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
     this.favorites = [{}];
+    this.getFavorites();
   }
 
   ionViewDidEnter() {
+    this.favorized = false;
     this.getFavorites();
   }
 
@@ -40,13 +43,13 @@ export class FavoritePage {
 
 
   getFavorites(){
-    /* this.restProvider.getDeal('')//id_client
+    this.restProvider.getFavorites(this.restProvider.getUserId())//id_client
       .then(data => {
         this.favorites = data;
         console.log(data);
       })
       .catch(e => {
         console.log("getFavorites error ", e);
-      }) */
+      })
   }
 }

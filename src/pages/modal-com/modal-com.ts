@@ -37,8 +37,8 @@ export class ModalComPage {
     }
 
 
-    public close() {
-        this.viewCtrl.dismiss(this.com);
+    public closeM() {
+        this.viewCtrl.dismiss();
     }
 
     ionViewDidLoad() {

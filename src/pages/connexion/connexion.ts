@@ -2,24 +2,21 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { RestProvider } from '../../providers/rest/rest';
-
-import {AccountPage} from '../account/account';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-connexion',
   templateUrl: 'connexion.html'
 })
 export class ConnexionPage {
- client: any;
-  user = {
-    identifiant: '',
-    mdp: ''
-  };
+  client: any;
+  user: any;
 
   constructor(public navCtrl: NavController, public http: HttpClient, public restProvider: RestProvider) {
-    /*this.user.email = '';
-    this.user.pseudo = '';
-    this.user.mdp = '';*/
+    this.user = {
+      identifiant: '',
+      mdp: '' 
+    }; // initial value
     this.http = http;
     this.client = {
       id_client: '',
@@ -28,7 +25,6 @@ export class ConnexionPage {
       pseudo: '',
       numero: ''
     };
-  
 
   }
 
@@ -44,7 +40,7 @@ export class ConnexionPage {
       window.localStorage.setItem('numero', this.client.numero);
       window.localStorage.setItem('mail', this.client.mail);
 
-      this.navCtrl.pop();
+      this.navCtrl.push(TabsPage);
     }, (err) => {
       console.log(err);
     });

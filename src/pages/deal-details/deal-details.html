@@ -2,26 +2,26 @@
   <ion-grid class="button-group">
     <ion-row>
       <ion-col>
-        <button ion-button icon-only clear style="color: #555" (click)="returnToList();">
-          <ion-icon name="arrow-back"></ion-icon>
+        <button ion-button icon-only clear style="color: white" (click)="returnToList();">
+          <ion-icon name="arrow-back" class="btn-icon"></ion-icon>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-only clear class="com" (click)="openModalFilter()">
-          <ion-icon name="chatbubbles" color=secondary></ion-icon>
+          <ion-icon name="chatbubbles" color=secondary class="btn-icon" style="color: white; float:right"></ion-icon>
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button icon-only clear class="favorite" (click)="getCommentaires()">
-          <ion-icon name="heart-outline" color=primary></ion-icon>
+        <button ion-button icon-only clear class="favorite" (click)="addFavorite()" *ngIf="favorized === false">
+          <ion-icon class="btn-icon" name="heart-outline" color=primary></ion-icon>
         </button>
-        <!-- <button ion-button icon-only clear style="color: #555">
-          <ion-icon name="heart" color=primary></ion-icon>
-        </button> -->
+        <button ion-button icon-only clear class="favorite" *ngIf="favorized === true" (click)="addFavorite()">
+          <ion-icon class="btn-icon" name="heart" color=primary></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <img src="../../assets/imgs/logo.png" />
+  <img src="../../assets/imgs/restau-3.jpg" />
   <div class="cadre">
     <div text-center style="background-color: #002c40; margin: -10px;">
       <ion-icon class="icone" name="restaurant" text-center *ngIf="selectedDeal.type === 'eat'"></ion-icon>

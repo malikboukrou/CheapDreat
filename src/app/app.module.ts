@@ -5,7 +5,7 @@ import {MyApp} from './app.component';
 import {Geolocation} from '@ionic-native/geolocation'; 
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { GoogleMaps,GoogleMap,GoogleMapsEvent,GoogleMapOptions,CameraPosition,MarkerOptions,Marker} from '@ionic-native/google-maps';
-
+import { ImagePicker } from '@ionic-native/image-picker';
 
 import {DealDetailsPage} from '../pages/deal-details/deal-details';
 import {HomePage} from '../pages/home/home';
@@ -52,7 +52,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     RestProvider,
     Geolocation,
     NativeGeocoder,
-    GoogleMaps
+    GoogleMaps,
+    ImagePicker
   ]
 })
 export class AppModule {}
