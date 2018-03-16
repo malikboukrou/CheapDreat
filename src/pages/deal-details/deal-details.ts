@@ -6,6 +6,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ListDealPage } from '../list-deal/list-deal';
 import { RestProvider } from '../../providers/rest/rest';
 
+
+import { ModalController } from 'ionic-angular';
+
 declare var google;
 
 @Component({
@@ -23,7 +26,8 @@ export class DealDetailsPage {
   map: any;
   deals: any;
 
-  constructor(public navCtrl: NavController, public restProvider: RestProvider, public navParams: NavParams, private geolocation: Geolocation, public googleMaps: GoogleMaps) {
+  constructor(public navCtrl: NavController, public restProvider: RestProvider, public navParams: NavParams,
+     private geolocation: Geolocation, public googleMaps: GoogleMaps, public modalCtrl: ModalController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedDeal = navParams.get('deal');
     this.deals = [{
@@ -142,5 +146,13 @@ export class DealDetailsPage {
       .catch(e => {
         console.log("getDeal error ", e);
       })
+  }
+
+  public openModalFilter() {
+    var modalPage = this.modalCtrl.create('ModalComPage', { id_deal: this.selectedDeal.id_deal, id_client: '1' }); //id_client: this.id_client
+    modalPage.onDidDismiss(data => {
+      console.log(data);
+    });
+    modalPage.present();
   }
 }

@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color=tertiary>
+    <ion-buttons start>
+      <button ion-button (click)="close()">Close</button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Commenter</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-textarea placeholder="Message" [(ngModel)]="com.com" name="com"></ion-textarea>
+  </ion-item>
+
+</ion-content>

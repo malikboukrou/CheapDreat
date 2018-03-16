@@ -36,6 +36,16 @@ export class RestProvider {
     });
   }
 
+  getFavorites(id_client) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/ReadFavoris.php?id_client=' + id_client).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log("err:"+err.status);
+      });
+    });
+  }
+
   createClient(data) {
     return new Promise((resolve, reject) => {
       this.http.post(this.apiUrl+'/CreateClient.php', JSON.stringify(data))

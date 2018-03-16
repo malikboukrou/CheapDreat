@@ -1,16 +1,47 @@
-<!--
-  Generated template for the FavoritePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar color=tertiary>
-    <ion-title>Favoris</ion-title>
-  </ion-navbar>
+  <ion-toolbar color=tertiary>
+
+    <ion-title>
+      Favoris
+    </ion-title>
+
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Chargement...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <button ion-item *ngFor="let f of favorites.records" (click)="itemTapped($event, f)" padding>
+      <ion-thumbnail item-start *ngIf="isPhoto(f.photo)">
+        <img src="../../assets/imgs/logo.png">
+      </ion-thumbnail>
+      <ion-thumbnail item-start *ngIf="!isPhoto(f.photo)">
+        <ion-icon name="image" style='color: #aaa6a6d3; font-size: 50px'></ion-icon>
+      </ion-thumbnail>
+
+      <p>
+        <span class="note">5.5</span>
+      </p>
+      <!--{{f.note}}-->
+      <p>
+        <span class="nom-enseigne">{{f.nom}}</span>
+      </p>
+      <p>
+        <span class="description">{{f.description}}</span>
+      </p>
+      <ion-icon name="chatbubbles" color=tertiary margin-top></ion-icon>
+      <span class="commentaire">3</span>
+      <!--{{deal.comments.length}}-->
+      <a (click)="itemTapped($event, f)">
+        <span class="manger">Allons manger...</span>
+      </a>
+    </button>
+  </ion-list>
 
 </ion-content>
