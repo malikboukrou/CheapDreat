@@ -1,30 +1,54 @@
-<ion-header>
-  <ion-toolbar style="background-color: transparent">
-    <ion-buttons start>
-      <button ion-button icon-only (click)="returnToList()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content style="margin-top:20px">
+<ion-content *ngIf="selectedDeal">
+  <ion-grid class="button-group">
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-only clear style="color: #555" (click)="returnToList();">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-only clear class="favorite" (click)="addFavorite()">
+          <ion-icon name="heart-outline" color=primary></ion-icon>
+        </button>
+        <!-- <button ion-button icon-only clear style="color: #555">
+          <ion-icon name="heart" color=primary></ion-icon>
+        </button> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <img src="../../assets/imgs/logo.png" />
-  <ion-icon name="star" style='color: yellow'></ion-icon>
-  <ion-icon name="star" style='color: yellow'></ion-icon>
-  <ion-icon name="star"></ion-icon>
-  <ion-icon name="star"></ion-icon>
-  <ion-icon name="star"></ion-icon>
-  <h1 text-center *ngIf="selectedDeal">
-    {{selectedDeal.nom}}
-  </h1>
-  <p *ngIf="selectedDeal.description">
-    Description : {{selectedDeal.description}}
-  </p>
-  <p *ngIf="selectedDeal.prix">
-    Prix : {{selectedDeal.prix}}
-  </p>
-  
-  <div #map id="map"></div> 
-</ion-content>
+  <div class="cadre">
+    <div text-center style="background-color: #002c40; margin: -10px;">
+      <ion-icon class="icone" name="restaurant" text-center *ngIf="selectedDeal.type === 'eat'"></ion-icon>
+      <ion-icon class="icone" name="wine" text-center *ngIf="selectedDeal.type === 'drink'"></ion-icon>
+    </div>
+    <h1 text-center class="nom" text-capitalize>
+      {{selectedDeal.nom}}
+    </h1>
+    <p text-center class="tel" style="margin-top:-5px">
+      <ion-icon name="call"></ion-icon>&nbsp;{{selectedDeal.telephone}}</p>
+    <p text-center>
+      <span class="type" text-capitalize>
+        {{selectedDeal.categorie_restaurant}}</span>
+      <span style="margin-left:20px" class="type">{{selectedDeal.prix}}</span>
+      <span class="type">€</span>
+    </p>
+  </div>
 
+  <div class="details">
+    <p class="geo">
+      <ion-icon class="locate" name="locate"></ion-icon>
+      <span class="adresse">{{selectedDeal.adresse}},&nbsp;</span>
+      <span class="adresse">{{selectedDeal.ville}}</span>&nbsp;
+      <span class="adresse">({{selectedDeal.codepostal}})</span>
+    </p>
+  </div>
+  <div #map id="map"></div>
+
+  <hr class="style1" text-center>
+
+  <div>
+    <p class="description" text-center>{{selectedDeal.description}}</p>
+  </div>
+
+</ion-content>

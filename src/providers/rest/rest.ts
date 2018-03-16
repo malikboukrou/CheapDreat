@@ -67,4 +67,14 @@ export class RestProvider {
       });
     });
   }
+
+  addFavorite(deal, user) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/CreateFavoris.php?id_deal=' + deal + '&id_client=' + user).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log("err:"+err.status);
+      });
+    });
+  }
 }

@@ -19,21 +19,7 @@ export class ListDealPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,
     public modalCtrl : ModalController) {
-    this.deals = [{
-      id: '',
-      nom: '',
-      adresse: '',
-      tel: '',
-      description: '',
-      note: '',
-      datedeb: '',
-      datefin: '',
-      jours: '',
-      moment: '',
-      type: '',
-      prix: '',
-      photos: '',
-    }];
+    this.deals = [{}];
   }
   
   getDeal() {

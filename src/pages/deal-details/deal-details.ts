@@ -4,6 +4,7 @@ import { GoogleMaps,GoogleMap,GoogleMapsEvent,GoogleMapOptions,CameraPosition,Ma
 
 import {NavController, NavParams} from 'ionic-angular';
 import { ListDealPage } from '../list-deal/list-deal';
+import { RestProvider } from '../../providers/rest/rest';
 
 declare var google;
 
@@ -22,7 +23,7 @@ export class DealDetailsPage {
   map: any;
   deals: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private geolocation : Geolocation, public googleMaps: GoogleMaps) {
+  constructor(public navCtrl: NavController, public restProvider: RestProvider, public navParams: NavParams,private geolocation : Geolocation, public googleMaps: GoogleMaps) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedDeal = navParams.get('deal');
     this.deals = [{
@@ -43,7 +44,8 @@ export class DealDetailsPage {
 
   returnToList() {
     console.log("return list deal");
-    this.navCtrl.push(ListDealPage);
+    //this.navCtrl.push(ListDealPage);
+    this.navCtrl.pop();
   }
 
 
@@ -130,5 +132,16 @@ addMarker(){
         //this.addMarker();
         this.addMarker2();
     
+    }
+
+    addFavorite(){
+      this.restProvider.addFavorite(this.selectedDeal.id, "")//manque userId
+      .then(data => {
+        this.deals = data;
+        console.log(data);
+      })
+      .catch(e => {
+        console.log("getDeal error ", e);
+      })
     }
 }
