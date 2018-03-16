@@ -29,10 +29,10 @@ export class CreateAccountPage {
            this.nav = nav;
     
            this.authForm = formBuilder.group({
-               pseudo: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9]*'), Validators.minLength(8), Validators.maxLength(30)])],
+               pseudo: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9]*'), Validators.minLength(3), Validators.maxLength(30)])],
                mdp: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
                mail: ['', Validators.compose([Validators.required,Validators.email])],
-               numero:['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10),Validators.pattern('[0-9]*')])],
+               numero:['', Validators.compose([Validators.required,Validators.pattern('[0-9]{10}')])],
                confirmationMDP: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
                
            }, {validator: this.matchingPasswords('mdp', 'confirmationMDP')}); 

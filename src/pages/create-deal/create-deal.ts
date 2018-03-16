@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
-
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 @Component({
   selector: 'page-create-deal',
@@ -10,6 +10,7 @@ import { RestProvider } from '../../providers/rest/rest';
 
 
 export class CreateDealPage {
+  createDealForm: FormGroup;
   deal = {
     nom: '',
     adresse: '',
@@ -47,7 +48,21 @@ export class CreateDealPage {
   buttonEat: string = this.colorInactive;
   buttonDrink: string = this.colorInactive;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public formBuilder: FormBuilder) {  
+    this.navCtrl = navCtrl;
+
+    this.createDealForm = formBuilder.group({
+      nom: ['', Validators.compose([Validators.required])],
+      adresse: ['', Validators.compose([Validators.required])],
+      ville: ['', Validators.compose([Validators.required,Validators.pattern('^[a-zéèêëàâîïôöûü\'-]+$')])],
+      codepostal: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{5}')])],
+      telephone: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{10}')])],
+      prix: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
+      description: ['', Validators.compose([Validators.required,Validators.minLength(10)])],
+      categorie_restaurant: ['', Validators.compose([Validators.required])],
+      reduction_type: ['', Validators.compose([Validators.required])],
+   }); 
+  }
 
   saveDeal() {
     this.parseDays();

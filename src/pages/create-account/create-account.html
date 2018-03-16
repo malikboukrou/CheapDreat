@@ -16,11 +16,10 @@
           </ion-item>
     
           <!-- Pseudo -->
-          <ion-item *ngIf="authForm.controls.pseudo.hasError('required') && authForm.controls.pseudo.touched">
-              <p>Le pseudo est obligatoire!</p>
-          </ion-item>
           <ion-item *ngIf="authForm.controls.pseudo.hasError('pattern') && authForm.controls.pseudo.touched">
-              <p>Le pseudo ne peut contenir que des chiffres et des lettres</p>
+              <ion-item *ngIf="authForm.controls.pseudo.hasError('required') && authForm.controls.pseudo.touched">
+                  <p>Le pseudo est obligatoire!</p>
+              </ion-item>
           </ion-item>        
           <ion-item *ngIf="authForm.controls.pseudo.hasError('minlength') && authForm.controls.pseudo.touched">
               <p>La taille minimum du pseudo et de 3 caractère!</p>
@@ -43,11 +42,8 @@
                   <ion-label floating>Numero</ion-label>
                   <ion-input formControlName="numero" type="tel" [(ngModel)]="client.numero"  name="numero"></ion-input>
               </ion-item>
-              <ion-item *ngIf="authForm.controls.numero.hasError('minlength') && authForm.controls.numero.touched">
-                  <p>Le numéro doit contenir 10 chiffre</p>
-              </ion-item>
               <ion-item *ngIf="authForm.controls.numero.hasError('pattern') && authForm.controls.numero.touched">
-                  <p>un numéro ne contient que des chiffres</p>
+                  <p>Le numéro doit contenir 10 chiffres</p>
               </ion-item>
     
           <!-- Mot de passe -->
