@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar color=tertiary>
+    <ion-title>
+      Ajouter commentaire
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only clear color=primary (click)="closeM()">
+        <ion-icon name="close" class="icone" ></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button icon-only clear color=secondary (click)="closeModal()">
+        <ion-icon name="checkmark" class="icone" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-textarea placeholder="Message" [(ngModel)]="com.com" name="com"></ion-textarea>
+  </ion-item>
+
+</ion-content>

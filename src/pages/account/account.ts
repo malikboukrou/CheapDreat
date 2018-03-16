@@ -25,7 +25,9 @@ export class AccountPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.id_client = window.localStorage.getItem('id_client');
     this.mdp = window.localStorage.getItem('mdp');
-    this
+    this.mail = window.localStorage.getItem('mail');
+    this.pseudo = window.localStorage.getItem('pseudo');
+    this.numero = window.localStorage.getItem('numero');
   }
 
   ionViewDidLoad() {
@@ -38,7 +40,6 @@ export class AccountPage {
     window.localStorage.removeItem('mail');
     window.localStorage.removeItem('pseudo');
     window.localStorage.removeItem('numero');
-
     this.navCtrl.setRoot(HomePage);
     this.navCtrl.popToRoot();         
 }  

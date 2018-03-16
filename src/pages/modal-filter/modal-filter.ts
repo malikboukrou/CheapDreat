@@ -17,7 +17,7 @@ export class ModalFilterPage {
     filter = {
         rayon: 10,
         categorie_restaurant: '',
-        prix: {min: 10, max: 50},
+        prix: {lower: 10, upper: 50},
         type: ''
     };
 
