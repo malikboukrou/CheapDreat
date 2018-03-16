@@ -166,7 +166,7 @@
 
   <!-- Categorie Restaurant -->
   <div [formGroup]="createDealForm">
-    <ion-list style="margin-bottom: 0px;">
+      <ion-list style="margin-bottom: 0px;" *ngIf="eat === true">
       <ion-item [ngClass]="{'error-border':!createDealForm.controls.categorie_restaurant.valid && createDealForm.controls.categorie_restaurant.touched}">
         <ion-label>Catégorie *</ion-label>
         <ion-select formControlName="categorie_restaurant"[(ngModel)]="deal.categorie_restaurant" name="categorie_restaurant">

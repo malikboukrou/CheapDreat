@@ -31,7 +31,7 @@ export class RestProvider {
       this.http.get(this.apiUrl+'/Read.php?type=' + choice).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        console.log("err:"+err.status);
       });
     });
   }
@@ -55,6 +55,16 @@ export class RestProvider {
         }, (err) => {
           reject(err);
         });
+    });
+  }
+
+  readFilter(filter) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/ReadFilter.php?type=' + filter.type + '&categorie_restaurant=' + filter.categorie_restaurant).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log("err:"+err.status);
+      });
     });
   }
 }
