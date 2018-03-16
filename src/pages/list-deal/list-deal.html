@@ -2,7 +2,7 @@
   <ion-toolbar color=tertiary>
 
     <ion-buttons start>
-      <button ion-button icon-only (click)="presentPopover($event)">
+      <button ion-button icon-only (click)="openModal()">
         <ion-icon name="options"></ion-icon>
       </button>
     </ion-buttons>
@@ -23,6 +23,12 @@
 
 
 <ion-content [ngSwitch]="choice">
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Chargement...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list *ngSwitchCase="'eat'">
     <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, tab)" padding>
@@ -32,22 +38,23 @@
       <ion-thumbnail item-start *ngIf="!isPhoto(tab.photo)">
         <ion-icon name="image" style='color: #aaa6a6d3; font-size: 50px'></ion-icon>
       </ion-thumbnail>
-      
-      <p><span class="note">5.5</span></p><!--{{tab.note}}-->
-      <p><span class="nom-enseigne">{{tab.nom}}</span></p>
-      <p><span class="description">{{tab.description}}</span></p>
-      <ion-icon name="chatbubbles" color=tertiary margin-top></ion-icon><span class="commentaire">3</span>
-      <!--{{deal.comments.length}}-->
-<<<<<<< HEAD
+
       <p>
-        {{tab.nom}}
+        <span class="note">5.5</span>
       </p>
-      <ion-icon name="chatbubbles" margin-top></ion-icon>
+      <!--{{tab.note}}-->
+      <p>
+        <span class="nom-enseigne">{{tab.nom}}</span>
+      </p>
+      <p>
+        <span class="description">{{tab.description}}</span>
+      </p>
+      <ion-icon name="chatbubbles" color=tertiary margin-top></ion-icon>
+      <span class="commentaire">3</span>
       <!--{{deal.comments.length}}-->
-      <a float-right margin-top (click)="itemTapped($event, tab)">Allons manger...</a>
-=======
-      <a (click)="itemTapped($event, tab)"><span class="manger">Allons manger...</span></a>
->>>>>>> ab0114c20da9263b0caec6a4ebb8f93ad7fec37d
+      <a (click)="itemTapped($event, tab)">
+        <span class="manger">Allons manger...</span>
+      </a>
     </button>
   </ion-list>
 

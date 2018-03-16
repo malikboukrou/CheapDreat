@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar color=tertiary>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Filtrer</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-range min="0" max="30" step="5" snaps="true" pin="true" [(ngModel)]="filter.rayon" color=tertiary>
+      <ion-icon range-left small color=secondary name="locate"></ion-icon>
+      <ion-icon range-right color=secondary name="locate"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-range dualKnobs="true" pin="true" [(ngModel)]="filter.prix" color="dark">
+      <ion-icon range-left small name="card"></ion-icon>
+      <ion-icon range-right name="card"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-list style="margin-bottom: 0px;" *ngIf="filter.type == 'eat'">
+    <ion-item>
+      <ion-label>Catégorie</ion-label>
+      <ion-select [(ngModel)]="filter.categorie_restaurant">
+        <ion-option value="pizzeria">Pizzeria</ion-option>
+        <ion-option value="indien">Indien</ion-option>
+        <ion-option value="asiatique">Asiatique</ion-option>
+        <ion-option value="fast-food">Fast-food</ion-option>
+        <ion-option value="français">Français</ion-option>
+        <ion-option value="boulangerie">Boulangerie</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

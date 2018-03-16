@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ListDealPage, PopoverPage } from './list-deal';
+import { ListDealPage } from './list-deal';
 
 @NgModule({
   declarations: [
-    ListDealPage,
-    PopoverPage
+    ListDealPage
   ],
   imports: [
     IonicPageModule.forChild(ListDealPage),

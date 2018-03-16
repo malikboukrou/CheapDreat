@@ -57,4 +57,14 @@ export class RestProvider {
         });
     });
   }
+
+  readFilter(filter) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/ReadFilter.php?type=' + filter.type + '&categorie_restaurant=' + filter.categorie_restaurant).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log("err:"+err.status);
+      });
+    });
+  }
 }

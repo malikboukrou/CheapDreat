@@ -1,21 +1,11 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { DealDetailsPage } from '../deal-details/deal-details';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateDealPage } from '../create-deal/create-deal';
-
-@Component({
-  template: `
-    <span>WOOOORK</span>
-  `
-})
-export class PopoverPage {
-  constructor(private navParams: NavParams) {
-  }
-}
-
+import { ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -28,7 +18,7 @@ export class ListDealPage {
   choice: string = "eat";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,
-  public popoverCtrl: PopoverController) {
+    public modalCtrl : ModalController) {
     this.deals = [{
       id: '',
       nom: '',
@@ -88,16 +78,32 @@ export class ListDealPage {
     return true;
   }
 
-  presentPopover(ev) {
-
-    let popover = this.popoverCtrl.create(PopoverPage);
-
-    popover.present({
-      ev: ev
+  public openModal(){
+    var modalPage = this.modalCtrl.create('ModalFilterPage', {choice: this.choice});
+    modalPage.onDidDismiss(data => {
+      console.log(data);
+      this.restProvider.readFilter(data)
+      .then(data => {
+        this.deals = data;
+        console.log(data);
+      })
+      .catch(e => {
+        console.log("getDeal error ", e);
+      })
     });
-  }
+    modalPage.present();
+  }  
 
   ionViewDidEnter() {
     this.getDeal();
+  }
+
+  doRefresh(refresher){
+    console.log('Started', refresher);
+    this.getDeal();
+    setTimeout(() => {
+        console.log('Async operation has ended');
+        refresher.complete();
+    }, 1000);
   }
 }
