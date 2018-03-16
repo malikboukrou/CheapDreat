@@ -16,25 +16,30 @@
           </ion-item>
     
           <!-- Pseudo -->
-          <ion-item *ngIf="authForm.controls.pseudo.hasError('pattern') && authForm.controls.pseudo.touched">
-              <ion-item *ngIf="authForm.controls.pseudo.hasError('required') && authForm.controls.pseudo.touched">
-                  <p>Le pseudo est obligatoire!</p>
-              </ion-item>
-          </ion-item>        
+          <ion-item *ngIf="authForm.controls.pseudo.hasError('required') && authForm.controls.pseudo.touched">
+              <p class="texte">Le pseudo est obligatoire!</p>
+          </ion-item>
+            
           <ion-item *ngIf="authForm.controls.pseudo.hasError('minlength') && authForm.controls.pseudo.touched">
-              <p>La taille minimum du pseudo et de 3 caractère!</p>
+              <p class="texte">La taille minimum du pseudo et de 3 caractère!</p>
           </ion-item>
           <ion-item *ngIf="authForm.controls.pseudo.hasError('maxlength') && authForm.controls.pseudo.touched">
-              <p>La taille maximum du pseudo et de 30 caractère!</p>
+              <p class="texte">La taille maximum du pseudo et de 30 caractère!</p>
           </ion-item>
+          <ion-item *ngIf="authForm.controls.pseudo.hasError('pattern') && authForm.controls.pseudo.touched">
+                <p class="texte">Les caractères spéciaux sont interdit</p>
+            </ion-item>
     
           <!-- Email -->
           <ion-item [ngClass]="{'error-border':!authForm.controls.mail.valid && authForm.controls.mail.touched}">
               <ion-label floating>Adresse email</ion-label>
               <ion-input formControlName="mail" type="text" [(ngModel)]="client.mail"  name="mail"></ion-input>
           </ion-item>
+          <ion-item *ngIf="authForm.controls.mail.hasError('required') && authForm.controls.mail.touched">
+                <p class="texte">L'adresse email est obligatoire</p>
+            </ion-item>
           <ion-item *ngIf="authForm.controls.mail.hasError('email') && authForm.controls.mail.touched">
-              <p>L'adresse mail n'est pas valide</p>
+              <p class="texte">L'adresse email n'est pas valide</p>
           </ion-item>
 
                <!-- Numero -->
@@ -42,8 +47,11 @@
                   <ion-label floating>Numero</ion-label>
                   <ion-input formControlName="numero" type="tel" [(ngModel)]="client.numero"  name="numero"></ion-input>
               </ion-item>
+              <ion-item *ngIf="authForm.controls.numero.hasError('required') && authForm.controls.numero.touched">
+                    <p class="texte">Le numéro est obligatoire</p>
+                </ion-item>
               <ion-item *ngIf="authForm.controls.numero.hasError('pattern') && authForm.controls.numero.touched">
-                  <p>Le numéro doit contenir 10 chiffres</p>
+                  <p class="texte">Le numéro doit contenir 10 chiffres</p>
               </ion-item>
     
           <!-- Mot de passe -->
@@ -52,10 +60,10 @@
               <ion-input formControlName="mdp" type="password" [(ngModel)]="client.mdp"  name="mdp"></ion-input>
           </ion-item>
           <ion-item *ngIf="authForm.controls.mdp.hasError('required') && authForm.controls.mdp.touched">
-              <p>Le mot de passe est obligatoire!</p>
+              <p class="texte">Le mot de passe est obligatoire!</p>
           </ion-item>
           <ion-item *ngIf="authForm.controls.mdp.hasError('minlength') && authForm.controls.mdp.touched">
-              <p>La taille minimum du mot de passe et de 8 caractère</p>
+              <p class="texte">La taille minimum du mot de passe et de 8 caractère</p>
           </ion-item>    
 
           <!-- Confirmation du mot de passe -->
@@ -64,7 +72,7 @@
               <ion-input type="password" [(ngModel)]="confirmationMDP" formControlName="confirmationMDP" required show-password></ion-input>
             </ion-item>
             <ion-item class='form-text error' *ngIf="authForm.controls.confirmationMDP.touched && authForm.hasError('mismatchedPasswords') && authForm.controls.mdp.valid">
-              <ion-label no-margin stacked>Le mot de passe est différent du premier</ion-label>
+              <ion-label no-margin stacked class="texte">Le mot de passe est différent du premier</ion-label>
             </ion-item>
     
           <button ion-button full color="primary" [disabled]="!authForm.valid" style="margin-top: 20px;" type="submit">Authorize</button>        

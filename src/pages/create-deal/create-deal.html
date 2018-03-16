@@ -80,7 +80,7 @@
       <div class="column">
         <div [formGroup]="createDealForm">
         <ion-item [ngClass]="{'error-border':!createDealForm.controls.codepostal.valid && createDealForm.controls.codepostal.touched}">
-          <ion-input type="number" formControlName="codepostal" placeholder="CP *" [(ngModel)]="deal.codepostal" name="codepostal"></ion-input>
+          <ion-input type="text" formControlName="codepostal" placeholder="CP *" [(ngModel)]="deal.codepostal" name="codepostal"></ion-input>
         </ion-item>
 
         <ion-item *ngIf="createDealForm.controls.codepostal.hasError('required') && createDealForm.controls.codepostal.touched">
