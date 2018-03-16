@@ -9,6 +9,8 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {CreateDealPage} from '../pages/create-deal/create-deal';
 import { TabsPage } from '../pages/tabs/tabs';
 
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -54,4 +56,5 @@ export class MyApp {
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
+
 }

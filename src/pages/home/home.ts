@@ -9,7 +9,8 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
 
   goToCreate() {
     this.navCtrl.push(CreateAccountPage);

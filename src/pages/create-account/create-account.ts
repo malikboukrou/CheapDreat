@@ -18,13 +18,6 @@ export class CreateAccountPage {
     numero: ''
   };
 
-  client2 = {
-    mail: 'test@test.com',
-    mdp: 'testtesttest',
-    pseudo: 'testtest',
-    numero: '0606060606'
-  };
-
   constructor(public nav: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public restProvider: RestProvider) {
            this.nav = nav;
     

@@ -68,6 +68,30 @@ export class RestProvider {
     });
   }
 
+  sendLogin(data) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/Connexion.php?identifiant=' + data.identifiant + '&mdp=' + data.mdp)
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log("err:"+err.status);
+      });
+    });
+  
+  }
+
+
+  sendLogin2(data) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/Connexion.php?identifiant=' + data.identifiant + '&mdp=' + data.mdp).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log("err:"+err.status);
+      });
+    });
+  }
+ 
+
   readFilter(filter) {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+'/ReadFilter.php?type=' + filter.type + '&categorie_restaurant=' + filter.categorie_restaurant).subscribe(data => {

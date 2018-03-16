@@ -12,21 +12,14 @@
     <form padding (ngSubmit)="connect()">
 
       <ion-item>
-        <ion-label color="primary" floating>Email</ion-label>
-        <!--[(ngModel)]="user.email"-->
-        <ion-input type="email"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label color="primary" floating>Pseudo</ion-label>
-        <!--[(ngModel)]="user.pseudo"-->
-        <ion-input type="text"></ion-input>
+        <ion-label color="primary" floating>Email ou Pseudo</ion-label>
+        <ion-input type="text" [(ngModel)]="user.identifiant"  name="identifiant"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label color="primary" floating>Mot de passe</ion-label>
         <!--[(ngModel)]="user.mdp"-->
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.mdp"  name="mdp"></ion-input>
       </ion-item>
 
       <div text-center>
