@@ -29,8 +29,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list *ngSwitchCase="'eat'">
+  <ion-list>
     <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, tab)" padding>
       <ion-thumbnail item-start *ngIf="isPhoto(tab.photo)">
         <img src="../../assets/imgs/logo.png">
@@ -56,10 +55,6 @@
         <span class="manger">Allons manger...</span>
       </a>
     </button>
-  </ion-list>
-
-  <ion-list *ngSwitchCase="'drink'">
-
   </ion-list>
 
 </ion-content>
