@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="background-gray">
-  <form>
+  <form >
 
     <ion-label style="margin-left: 15px">TYPE DE DEAL</ion-label>
 
@@ -27,62 +27,124 @@
 
     <ion-label style="margin-left: 15px">INFORMATIONS</ion-label>
 
-    <ion-item>
+    <!-- Nom de l'enseigne -->
+    <div [formGroup]="createDealForm">
+    <ion-item [ngClass]="{'error-border':!createDealForm.controls.nom.valid && createDealForm.controls.nom.touched}">
       <ion-label>
         <ion-icon name="briefcase"></ion-icon>
       </ion-label>
-      <ion-input type="text" placeholder="Nom de l'enseigne" [(ngModel)]="deal.nom" name="nom"></ion-input>
+      <ion-input type="text" formControlName="nom" placeholder="Nom de l'enseigne *" [(ngModel)]="deal.nom" name="nom"></ion-input>
     </ion-item>
+    
+    <ion-item *ngIf="createDealForm.controls.nom.hasError('required') && createDealForm.controls.nom.touched">
+      <p class="texte">Le nom est obligatoire!</p>
+    </ion-item>
+  </div>
 
-    <ion-item>
+  <!-- Adresse -->
+    <div [formGroup]="createDealForm">
+    <ion-item [ngClass]="{'error-border':!createDealForm.controls.adresse.valid && createDealForm.controls.adresse.touched}">
       <ion-label>
         <ion-icon name="home"></ion-icon>
       </ion-label>
-      <ion-input type="text" placeholder="Adresse" [(ngModel)]="deal.adresse" name="adresse"></ion-input>
+      <ion-input type="text" formControlName="adresse" placeholder="Adresse *" [(ngModel)]="deal.adresse" name="adresse"></ion-input>
     </ion-item>
+    
+    <ion-item *ngIf="createDealForm.controls.adresse.hasError('required') && createDealForm.controls.adresse.touched">
+        <p class="texte">L'adresse est obligatoire!</p>
+      </ion-item>
+    </div>
 
+    <!-- Ville -->
     <div class="row">
       <div class="column">
-        <ion-item>
+          <div [formGroup]="createDealForm">
+        <ion-item [ngClass]="{'error-border':!createDealForm.controls.ville.valid && createDealForm.controls.ville.touched}">
           <ion-label>
             <ion-icon name="locate"></ion-icon>
           </ion-label>
-          <ion-input type="text" placeholder="Ville" [(ngModel)]="deal.ville" name="ville"></ion-input>
+          <ion-input type="text" formControlName="ville" placeholder="Ville *" [(ngModel)]="deal.ville" name="ville"></ion-input>
         </ion-item>
+
+        <ion-item *ngIf="createDealForm.controls.ville.hasError('required') && createDealForm.controls.ville.touched">
+            <p class="texte">La ville est<br/> obligatoire!</p>
+          </ion-item>
+          <ion-item *ngIf="createDealForm.controls.ville.hasError('pattern') && createDealForm.controls.ville.touched">
+              <p class="texte">Ville syntax <br/> incorrect</p>
+            </ion-item>
+          </div>
       </div>
+
+   
+    <!-- Code postal -->
       <div class="column">
-        <ion-item>
-          <ion-input type="number" placeholder="CP" [(ngModel)]="deal.codepostal" name="codepostal"></ion-input>
+        <div [formGroup]="createDealForm">
+        <ion-item [ngClass]="{'error-border':!createDealForm.controls.codepostal.valid && createDealForm.controls.codepostal.touched}">
+          <ion-input type="number" formControlName="codepostal" placeholder="CP *" [(ngModel)]="deal.codepostal" name="codepostal"></ion-input>
         </ion-item>
+
+        <ion-item *ngIf="createDealForm.controls.codepostal.hasError('required') && createDealForm.controls.codepostal.touched">
+            <p class="texte">Le codepostal est <br/> obligatoire!</p>
+          </ion-item>
+          <ion-item *ngIf="createDealForm.controls.codepostal.hasError('pattern') && createDealForm.controls.codepostal.touched">
+              <p class="texte">Le codepostal doit <br/> etre composé de <br/> 5 chiffres!</p>
+            </ion-item>
+      </div>
       </div>
     </div>
 
-    <ion-item>
+    <!-- Telephone -->
+    <div [formGroup]="createDealForm">
+    <ion-item [ngClass]="{'error-border':!createDealForm.controls.telephone.valid && createDealForm.controls.telephone.touched}">
       <ion-label>
         <ion-icon name="call"></ion-icon>
       </ion-label>
-      <ion-input type="tel" placeholder="N° Tél" [(ngModel)]="deal.telephone" name="telephone"></ion-input>
+      <ion-input type="tel" formControlName="telephone" placeholder="N° Tél *" [(ngModel)]="deal.telephone" name="telephone"></ion-input>
     </ion-item>
+    <ion-item *ngIf="createDealForm.controls.telephone.hasError('required') && createDealForm.controls.telephone.touched">
+        <p class="texte">Le numero de telephone est obligatoire</p>
+      </ion-item>
+      <ion-item *ngIf="createDealForm.controls.telephone.hasError('pattern') && createDealForm.controls.telephone.touched">
+          <p class="texte">Le numero de telephone doit contenir 10 chiffres</p> 
+        </ion-item>
+  </div>
 
     <ion-label style="margin-left: 15px">DÉTAILS DU DEAL</ion-label>
 
+ <!-- Type de reduction -->
+ <div [formGroup]="createDealForm">
     <ion-list style="margin-bottom: 0px;">
-      <ion-item>
-        <ion-label>Type de réduction</ion-label>
-        <ion-select [(ngModel)]="deal.reduction_type" name="reduction_type">
+      <ion-item [ngClass]="{'error-border':!createDealForm.controls.reduction_type.valid && createDealForm.controls.reduction_type.touched}">
+        <ion-label>Type de réduction *</ion-label>
+        <ion-select formControlName="reduction_type" [(ngModel)]="deal.reduction_type" name="reduction_type">
           <ion-option value="reduction">Réduction</ion-option>
           <ion-option value="rabais">Rabais</ion-option>
           <ion-option value="autre">Autre</ion-option>
         </ion-select>
       </ion-item>
+      <ion-item *ngIf="createDealForm.controls.reduction_type.hasError('required') && createDealForm.controls.reduction_type.touched">
+          <p class="texte">Le type de reduction est obligatoire</p> 
+        </ion-item>
     </ion-list>
+  </div>
+  
 
-    <ion-item>
+   <!-- Prix -->
+   <div [formGroup]="createDealForm">
+    <ion-item [ngClass]="{'error-border':!createDealForm.controls.prix.valid && createDealForm.controls.prix.touched}">
       <ion-label>
         <ion-icon name="card"></ion-icon>
       </ion-label>
-      <ion-input class="price" type="number" placeholder="Prix" [(ngModel)]="deal.prix" name="prix"></ion-input>
+      <ion-input class="price" formControlName="prix" type="number" placeholder="Prix *" [(ngModel)]="deal.prix" name="prix"></ion-input>
     </ion-item>
+
+    <ion-item *ngIf="createDealForm.controls.prix.hasError('required') && createDealForm.controls.prix.touched">
+        <p class="texte">Le prix est obligatoire</p> 
+      </ion-item>
+      <ion-item *ngIf="createDealForm.controls.prix.hasError('pattern') && createDealForm.controls.prix.touched">
+          <p class="texte">Le prix ne doit contenir que des chiffres</p> 
+        </ion-item>
+  </div>
 
     <ion-item>
       <ion-label>
@@ -91,15 +153,23 @@
       <ion-input class="reduc" type="number" placeholder="Réduction" [(ngModel)]="deal.montant_reduction" name="montant_reduction"></ion-input>%
     </ion-item>
 
-
-    <ion-item>
-      <ion-textarea placeholder="Description" [(ngModel)]="deal.description" name="description"></ion-textarea>
+    <!-- Description -->
+    <div [formGroup]="createDealForm">
+    <ion-item [ngClass]="{'error-border':!createDealForm.controls.description.valid && createDealForm.controls.description.touched}">
+      <ion-textarea placeholder="Description *" formControlName="description" [(ngModel)]="deal.description" name="description"></ion-textarea>
     </ion-item>
+    <ion-item *ngIf="createDealForm.controls.description.hasError('required') && createDealForm.controls.description.touched">
+        <p class="texte">La description est obligatoire</p> 
+      </ion-item>
 
+  </div>
+
+  <!-- Categorie Restaurant -->
+  <div [formGroup]="createDealForm">
     <ion-list style="margin-bottom: 0px;">
-      <ion-item>
-        <ion-label>Catégorie</ion-label>
-        <ion-select [(ngModel)]="deal.categorie_restaurant" name="categorie_restaurant">
+      <ion-item [ngClass]="{'error-border':!createDealForm.controls.categorie_restaurant.valid && createDealForm.controls.categorie_restaurant.touched}">
+        <ion-label>Catégorie *</ion-label>
+        <ion-select formControlName="categorie_restaurant"[(ngModel)]="deal.categorie_restaurant" name="categorie_restaurant">
           <ion-option value="pizzeria">Pizzeria</ion-option>
           <ion-option value="indien">Indien</ion-option>
           <ion-option value="asiatique">Asiatique</ion-option>
@@ -108,7 +178,11 @@
           <ion-option value="boulangerie">Boulangerie</ion-option>
         </ion-select>
       </ion-item>
+      <ion-item *ngIf="createDealForm.controls.categorie_restaurant.hasError('required') && createDealForm.controls.categorie_restaurant.touched">
+          <p class="texte">La categorie du restaurant est obligatoire</p> 
+        </ion-item>
     </ion-list>
+  </div>
 
     <ion-item>
       <ion-label>
@@ -123,6 +197,7 @@
       </ion-label>
       <ion-datetime displayFormat="DD MMM YYYY" placeholder="Date de fin" [(ngModel)]="deal.datefin" name="datefin"></ion-datetime>
     </ion-item>
+  
   </form>
 
   <ion-list style="margin-top: 10px;">
@@ -180,7 +255,7 @@
 
 
   <div text-center margin>
-    <button ion-button block color="secondary" (click)="saveDeal()">
+    <button ion-button block color="secondary" [disabled]="!createDealForm.valid" (click)="saveDeal()">
       <ion-icon name="share"></ion-icon>&emsp;Envoyer le deal
     </button>
   </div>
