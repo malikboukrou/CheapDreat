@@ -66,9 +66,6 @@
         <ion-item *ngIf="createDealForm.controls.ville.hasError('required') && createDealForm.controls.ville.touched">
             <p class="texte">La ville est<br/> obligatoire!</p>
           </ion-item>
-          <ion-item *ngIf="createDealForm.controls.ville.hasError('pattern') && createDealForm.controls.ville.touched">
-              <p class="texte">Ville syntax <br/> incorrect</p>
-            </ion-item>
           </div>
       </div>
 

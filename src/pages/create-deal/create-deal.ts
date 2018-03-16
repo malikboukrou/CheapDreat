@@ -54,7 +54,7 @@ export class CreateDealPage {
     this.createDealForm = formBuilder.group({
       nom: ['', Validators.compose([Validators.required])],
       adresse: ['', Validators.compose([Validators.required])],
-      ville: ['', Validators.compose([Validators.required,Validators.pattern('^[a-zéèêëàâîïôöûü\'-]+$')])],
+      ville: ['', Validators.compose([Validators.required])],
       codepostal: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{5}')])],
       telephone: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{10}')])],
       prix: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
