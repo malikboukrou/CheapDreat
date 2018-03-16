@@ -6,6 +6,9 @@ import { DealDetailsPage } from '../deal-details/deal-details';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateDealPage } from '../create-deal/create-deal';
 import { ModalController } from 'ionic-angular';
+import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
+
 
 @IonicPage()
 @Component({
@@ -16,14 +19,19 @@ export class ListDealPage {
   deals: any;
   //segment choice eat or drink
   choice: string = "eat";
+  options: GeolocationOptions;
+  currentPos: Geoposition;
+  lat: any;
+  long: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,
-    public modalCtrl : ModalController) {
+    public modalCtrl: ModalController, private geolocation: Geolocation) {
     this.deals = [{}];
   }
-  
+
   getDeal() {
-    this.restProvider.getDeal(this.choice)
+    console.log("alt:"+this.lat);
+    this.restProvider.getDeal(this.choice, this.lat, this.long)
       .then(data => {
         this.deals = data;
         console.log(data);
@@ -39,57 +47,60 @@ export class ListDealPage {
     });
   }
 
-  goAddDeal(){
+  goAddDeal() {
     this.navCtrl.push(CreateDealPage);
   }
 
-  // A IMPLEMENTER
-  getItems(ev) {
-    // set val to the value of the ev target
-    var val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      console.log("YOOO ", val);
-      this.deals = this.deals.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
-  isPhoto(photo){
-    if (photo === undefined){
+  isPhoto(photo) {
+    if (photo === undefined) {
       return false;
     }
     return true;
   }
 
-  public openModal(){
-    var modalPage = this.modalCtrl.create('ModalFilterPage', {choice: this.choice});
+  public openModal() {
+    var modalPage = this.modalCtrl.create('ModalFilterPage', { choice: this.choice });
     modalPage.onDidDismiss(data => {
       console.log(data);
       this.restProvider.readFilter(data)
-      .then(data => {
-        this.deals = data;
-        console.log(data);
-      })
-      .catch(e => {
-        console.log("getDeal error ", e);
-      })
+        .then(data => {
+          this.deals = data;
+          console.log(data);
+        })
+        .catch(e => {
+          console.log("getDeal error ", e);
+        })
     });
     modalPage.present();
-  }  
-
-  ionViewDidEnter() {
-    this.getDeal();
   }
 
-  doRefresh(refresher){
+  ionViewDidEnter() {
+    this.getUserPosition();
+  }
+
+  doRefresh(refresher) {
     console.log('Started', refresher);
     this.getDeal();
     setTimeout(() => {
-        console.log('Async operation has ended');
-        refresher.complete();
+      console.log('Async operation has ended');
+      refresher.complete();
     }, 1000);
   }
+
+  getUserPosition() {
+    this.options = {
+      enableHighAccuracy: false
+    };
+    this.geolocation.getCurrentPosition(this.options).then((pos: Geoposition) => {
+      this.currentPos = pos;
+      this.lat = pos.coords.latitude;
+      this.long = pos.coords.longitude;
+      this.getDeal();
+
+    }, (err: PositionError) => {
+      console.log("error : " + err.message);
+      ;
+    })
+  }
+
 }

@@ -29,7 +29,6 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <button ion-item *ngFor="let tab of deals.records" (click)="itemTapped($event, tab)" padding>
       <ion-thumbnail item-start *ngIf="isPhoto(tab.photo)">
