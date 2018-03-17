@@ -56,9 +56,14 @@ export class DealDetailsPage {
   }
 
   ionViewDidEnter(){
+<<<<<<< HEAD
     this.addMap(this.selectedDeal.latitude,this.selectedDeal.longitude);
 }    
 
+=======
+    this.addMap(this.selectedDeal.latitude, this.selectedDeal.longitude);
+  }
+>>>>>>> cbb38737ba49c47bc50c2e92afec4019917d6f4f
 
   addMarker() {
     let marker = new google.maps.Marker({
@@ -67,7 +72,11 @@ export class DealDetailsPage {
       position: { lat: +this.selectedDeal.latitude, lng: +this.selectedDeal.longitude },
     });
 
+<<<<<<< HEAD
     let content = "<p>Deal location !</p>";
+=======
+    let content = "<p>Voici la position du deal !</p>";
+>>>>>>> cbb38737ba49c47bc50c2e92afec4019917d6f4f
     let infoWindow = new google.maps.InfoWindow({
       content: content
     });

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
-import { ImagePicker } from '@ionic-native/image-picker';
+// import { ImagePicker } from '@ionic-native/image-picker';
 
 @Component({
   selector: 'page-create-deal',
@@ -50,7 +50,7 @@ export class CreateDealPage {
   buttonEat: string = this.colorInactive;
   buttonDrink: string = this.colorInactive;
 
-  constructor(private imagePicker: ImagePicker, public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public formBuilder: FormBuilder) {  
+  constructor( public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public formBuilder: FormBuilder) {  
     this.navCtrl = navCtrl;
 
     this.createDealForm = formBuilder.group({
@@ -133,12 +133,12 @@ export class CreateDealPage {
 
   doNothing(){}
 
-  goCamera(){
-    this.imagePicker.getPictures(null).then((results) => {
-      for (var i = 0; i < results.length; i++) {
-          console.log('Image URI: ' + results[i]);
-      }
-    }, (err) => { });
-  }
+  // goCamera(){
+  //   this.imagePicker.getPictures(null).then((results) => {
+  //     for (var i = 0; i < results.length; i++) {
+  //         console.log('Image URI: ' + results[i]);
+  //     }
+  //   }, (err) => { });
+  // }
 
 }
