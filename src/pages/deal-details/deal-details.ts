@@ -55,15 +55,19 @@ export class DealDetailsPage {
     this.navCtrl.pop();
   }
 
+  ionViewDidEnter(){
+    this.addMap(this.selectedDeal.latitude,this.selectedDeal.longitude);
+}    
+
 
   addMarker() {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: { lat: 50.291002291002291002, lng: 2.7775349999999435 },
+      position: { lat: +this.selectedDeal.latitude, lng: +this.selectedDeal.longitude },
     });
 
-    let content = "<p>This is your current position !</p>";
+    let content = "<p>Deal location !</p>";
     let infoWindow = new google.maps.InfoWindow({
       content: content
     });
@@ -113,8 +117,8 @@ export class DealDetailsPage {
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    //this.addMarker();
-    this.addMarker2();
+    this.addMarker();
+    //this.addMarker2();
 
   }
 
